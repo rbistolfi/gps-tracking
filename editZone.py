@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'editZone.ui'
 #
-# Created: Wed Jun 17 12:24:19 2015
+# Created: Thu Jun 18 10:27:56 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -42,6 +42,21 @@ class Ui_editZone(object):
         self.btnDeleteZone = QtGui.QPushButton(editZone)
         self.btnDeleteZone.setGeometry(QtCore.QRect(30, 310, 111, 27))
         self.btnDeleteZone.setObjectName(_fromUtf8("btnDeleteZone"))
+        self.widget = QtGui.QWidget(editZone)
+        self.widget.setGeometry(QtCore.QRect(200, 260, 71, 85))
+        self.widget.setObjectName(_fromUtf8("widget"))
+        self.verticalLayout = QtGui.QVBoxLayout(self.widget)
+        self.verticalLayout.setMargin(0)
+        self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
+        self.label = QtGui.QLabel(self.widget)
+        self.label.setObjectName(_fromUtf8("label"))
+        self.verticalLayout.addWidget(self.label)
+        self.lnZone = QtGui.QLineEdit(self.widget)
+        self.lnZone.setObjectName(_fromUtf8("lnZone"))
+        self.verticalLayout.addWidget(self.lnZone)
+        self.btnAdd = QtGui.QPushButton(self.widget)
+        self.btnAdd.setObjectName(_fromUtf8("btnAdd"))
+        self.verticalLayout.addWidget(self.btnAdd)
 
         self.retranslateUi(editZone)
         QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("accepted()")), editZone.accept)
@@ -53,4 +68,6 @@ class Ui_editZone(object):
         item = self.tableWidget.horizontalHeaderItem(0)
         item.setText(_translate("editZone", "Zones", None))
         self.btnDeleteZone.setText(_translate("editZone", "Delete All Zones", None))
+        self.label.setText(_translate("editZone", "Add Zones", None))
+        self.btnAdd.setText(_translate("editZone", "Add", None))
 

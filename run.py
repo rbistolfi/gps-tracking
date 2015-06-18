@@ -30,7 +30,6 @@ class Principal(QMainWindow):
 	def searchPath(self):
 		dir_ = QFileDialog.getExistingDirectory(None, 'Select a folder:', 'C:\\', QFileDialog.ShowDirsOnly)
 		self.mainWindow.lblPath.setText(dir_)
-		print dir_
 	
 	def searchFiles(self):
 		path = self.mainWindow.lblPath.text()
@@ -48,6 +47,8 @@ class CategoryParam(QDialog):
         self.categoryParam = Ui_CatParam()
         self.categoryParam.setupUi(self)
 
+
+
 class EditZone(QDialog):
 	def __init__(self, parent=None):
 		QDialog.__init__(self)
@@ -55,25 +56,36 @@ class EditZone(QDialog):
 		self.editZone = Ui_editZone()
 		self.editZone.setupUi(self)
 
-		self.createTable(self.editZone)
-
+		self.createTable()
 		self.connect(self.editZone.btnDeleteZone,SIGNAL('clicked()'),self.deleteZone)
+		self.connect(self.editZone.btnAdd,SIGNAL('clicked()'),self.addZone)
 
 	def deleteZone(self):
-		f = open('/home/nano/Escritorio/Version 1.0/zones.txt','w')
-		self.createTable(self.editZone)		
+		f = open('/home/nano/Escritorio/gps-tracking/zones.txt','w')
+		self.createTable()		
 
-	def createTable(self,ventana):
+	def createTable(self):
 		try:
-			f = open('/home/nano/Escritorio/Version 1.0/zones.txt')
+			f = open('/home/nano/Escritorio/gps-tracking/zones.txt','r')
 			zones = f.read().split("\n")
 			self.editZone.tableWidget.setColumnCount(1)
 			self.editZone.tableWidget.setRowCount(len(zones))
 			for i,zone in enumerate(zones):
 				newitem = QTableWidgetItem(zone)
 				self.editZone.tableWidget.setItem(0,i,newitem)
+				
 		except:
 			pass
+	def addZone(self):
+		valueZone = self.editZone.lnZone.text()
+		f = open('/home/nano/Escritorio/gps-tracking/zones.txt','a+')
+		if f.readline() != "":
+			f.write('\n')
+		f.write(valueZone)
+		f.close()
+		self.editZone.lnZone.setText("")
+		self.createTable()
+		
 
 
    
