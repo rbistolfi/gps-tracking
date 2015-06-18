@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>744</width>
-    <height>573</height>
+    <width>1036</width>
+    <height>648</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,31 +17,27 @@
    <widget class="QLabel" name="lblPath">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>0</y>
-      <width>391</width>
-      <height>17</height>
+      <x>0</x>
+      <y>540</y>
+      <width>751</width>
+      <height>21</height>
      </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Panel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
     </property>
     <property name="text">
      <string/>
     </property>
    </widget>
-   <widget class="QPlainTextEdit" name="txtFile">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>50</y>
-      <width>411</width>
-      <height>411</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QPushButton" name="btnConvert">
     <property name="geometry">
      <rect>
-      <x>550</x>
-      <y>20</y>
+      <x>580</x>
+      <y>10</y>
       <width>85</width>
       <height>27</height>
      </rect>
@@ -50,13 +46,211 @@
      <string>Convert</string>
     </property>
    </widget>
+   <widget class="QGroupBox" name="groupBox">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>50</y>
+      <width>681</width>
+      <height>161</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(122, 155, 216)</string>
+    </property>
+    <property name="title">
+     <string/>
+    </property>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>40</y>
+       <width>581</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>KacstOne</family>
+       <pointsize>14</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>DESAFIO RUTA 40 - 2015                     ETAPA    1</string>
+     </property>
+    </widget>
+    <widget class="QSplitter" name="splitter">
+     <property name="geometry">
+      <rect>
+       <x>270</x>
+       <y>100</y>
+       <width>301</width>
+       <height>27</height>
+      </rect>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <widget class="QLabel" name="lblMoto">
+      <property name="styleSheet">
+       <string notr="true">background-color: white</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::WinPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <property name="text">
+       <string>Motos</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lnCountMoto">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(250, 250, 250)</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblQuad">
+      <property name="styleSheet">
+       <string notr="true">background-color: white</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::WinPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <property name="text">
+       <string>Quad</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lnCountQuad">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(250, 250, 250)</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblAuto">
+      <property name="styleSheet">
+       <string notr="true">background-color: white</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::WinPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <property name="text">
+       <string>Autos</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lnCountAuto">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(250, 250, 250)</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QTableWidget" name="tableWidget">
+    <property name="geometry">
+     <rect>
+      <x>-20</x>
+      <y>240</y>
+      <width>871</width>
+      <height>271</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>871</width>
+      <height>271</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>16777215</width>
+      <height>271</height>
+     </size>
+    </property>
+    <column>
+     <property name="text">
+      <string>Competidor N°</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Nombre</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>N° Orden</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Categoría</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>WPT</string>
+     </property>
+     <property name="font">
+      <font>
+       <stylestrategy>PreferDefault</stylestrategy>
+      </font>
+     </property>
+     <property name="foreground">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>0</green>
+        <blue>0</blue>
+       </color>
+      </brush>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>DZ</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Disc</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Cod</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Version</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>GPS N°</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Observaciones</string>
+     </property>
+    </column>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>744</width>
+     <width>1036</width>
      <height>27</height>
     </rect>
    </property>
