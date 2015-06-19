@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1240</width>
-    <height>667</height>
+    <width>1062</width>
+    <height>597</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -36,8 +36,8 @@
    <widget class="QPushButton" name="btnConvert">
     <property name="geometry">
      <rect>
-      <x>580</x>
-      <y>10</y>
+      <x>480</x>
+      <y>510</y>
       <width>85</width>
       <height>27</height>
      </rect>
@@ -51,7 +51,7 @@
      <rect>
       <x>10</x>
       <y>50</y>
-      <width>801</width>
+      <width>702</width>
       <height>161</height>
      </rect>
     </property>
@@ -158,7 +158,7 @@
      <rect>
       <x>10</x>
       <y>230</y>
-      <width>801</width>
+      <width>702</width>
       <height>271</height>
      </rect>
     </property>
@@ -256,10 +256,10 @@
    <widget class="QTableWidget" name="tableWidget">
     <property name="geometry">
      <rect>
-      <x>890</x>
-      <y>60</y>
-      <width>291</width>
-      <height>541</height>
+      <x>770</x>
+      <y>40</y>
+      <width>241</width>
+      <height>461</height>
      </rect>
     </property>
    </widget>
@@ -269,7 +269,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1240</width>
+     <width>1062</width>
      <height>27</height>
     </rect>
    </property>

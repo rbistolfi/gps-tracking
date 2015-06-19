@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'mainWindow.ui'
 #
-# Created: Fri Jun 19 12:20:35 2015
+# Created: Fri Jun 19 15:03:24 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -36,10 +36,10 @@ class Ui_MainWindow(object):
         self.lblPath.setText(_fromUtf8(""))
         self.lblPath.setObjectName(_fromUtf8("lblPath"))
         self.btnConvert = QtGui.QPushButton(self.centralwidget)
-        self.btnConvert.setGeometry(QtCore.QRect(580, 10, 85, 27))
+        self.btnConvert.setGeometry(QtCore.QRect(480, 510, 85, 27))
         self.btnConvert.setObjectName(_fromUtf8("btnConvert"))
         self.groupBox = QtGui.QGroupBox(self.centralwidget)
-        self.groupBox.setGeometry(QtCore.QRect(10, 50, 801, 161))
+        self.groupBox.setGeometry(QtCore.QRect(10, 50, 721, 161))
         self.groupBox.setStyleSheet(_fromUtf8("background-color: rgb(122, 155, 216)"))
         self.groupBox.setTitle(_fromUtf8(""))
         self.groupBox.setObjectName(_fromUtf8("groupBox"))
@@ -81,7 +81,7 @@ class Ui_MainWindow(object):
         self.lnCountAuto.setStyleSheet(_fromUtf8("background-color: rgb(250, 250, 250)"))
         self.lnCountAuto.setObjectName(_fromUtf8("lnCountAuto"))
         self.tblGralStatus = QtGui.QTableWidget(self.centralwidget)
-        self.tblGralStatus.setGeometry(QtCore.QRect(10, 230, 801, 271))
+        self.tblGralStatus.setGeometry(QtCore.QRect(10, 230, 702, 271))
         self.tblGralStatus.setMinimumSize(QtCore.QSize(120, 271))
         self.tblGralStatus.setStyleSheet(_fromUtf8("font: 9pt \"Noto Sans Thai UI\";"))
         self.tblGralStatus.setObjectName(_fromUtf8("tblGralStatus"))
@@ -120,7 +120,7 @@ class Ui_MainWindow(object):
         item = QtGui.QTableWidgetItem()
         self.tblGralStatus.setHorizontalHeaderItem(10, item)
         self.tableWidget = QtGui.QTableWidget(self.centralwidget)
-        self.tableWidget.setGeometry(QtCore.QRect(890, 60, 291, 541))
+        self.tableWidget.setGeometry(QtCore.QRect(770, 40, 241, 461))
         self.tableWidget.setObjectName(_fromUtf8("tableWidget"))
         self.tableWidget.setColumnCount(0)
         self.tableWidget.setRowCount(0)
