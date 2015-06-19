@@ -1,0 +1,58 @@
+***  Récepteur: 1.17, Outil: 5.2.0.6, Mode: ORG, Freq: 2 Hz, GPS: Raid, Véhicule: 2, Course: 8, CHK: NOK  ***
+InfosControle
+Concurrent;   26
+No série; 5019
+Course; E1K0 
+Code1 entrés; 2982
+Code2 entrés; 
+CHK; NOK
+CP non passés; 3
+Asc non passés; 0
+Discontinuités; 0
+Excès vit.village; 1
+Excès vit.globale; 0
+Nb Wpts démasqués; 0
+Cps non passés; 4; 5; 40
+Dépassements vitesse; 22+ : 82
+ 
+InfosChronos
+DateHeure: 6/4/13;09:12:27;TPC;NumWpt: 1;TempsPassage: 745;;
+DateHeure: 6/4/13;09:32:30;TPC;NumWpt: 39;TempsPassage: 235;;
+DateHeure: 6/4/13;11:55:02;TPC;NumWpt: 2;TempsPassage: 690;;
+DateHeure: 6/4/13;12:26:54;TPC;NumWpt: 3;TempsPassage: 730;;
+DateHeure: 6/4/13;13:22:16;TPC;NumWpt: 6;TempsPassage: 875;;
+DateHeure: 6/4/13;13:24:30;TPC;NumWpt: 7;TempsPassage: 665;;
+DateHeure: 6/4/13;13:31:11;TPC;NumWpt: 8;TempsPassage: 250;;
+DateHeure: 6/4/13;13:38:23;TPC;NumWpt: 9;TempsPassage: 50;;
+DateHeure: 6/4/13;13:39:11;TPC;NumWpt: 10;TempsPassage: 670;;
+DateHeure: 6/4/13;13:43:57;TPC;NumWpt: 11;TempsPassage: 580;;
+DateHeure: 6/4/13;14:01:40;TPC;NumWpt: 12;TempsPassage: 765;;
+DateHeure: 6/4/13;14:02:40;TPC;NumWpt: 13;TempsPassage: 695;;
+DateHeure: 6/4/13;14:29:46;TPC;NumWpt: 14;TempsPassage: 475;;
+DateHeure: 6/4/13;14:51:51;TPC;NumWpt: 15;TempsPassage: 180;;
+DateHeure: 6/4/13;14:57:23;TPC;NumWpt: 16;TempsPassage: 700;;
+DateHeure: 6/4/13;15:10:30;TPC;NumWpt: 17;TempsPassage: 645;;
+DateHeure: 6/4/13;15:12:05;TPC;NumWpt: 18;TempsPassage: 830;;
+DateHeure: 6/4/13;15:19:04;TPC;NumWpt: 19;TempsPassage: 185;;
+DateHeure: 6/4/13;15:19:52;TPC;NumWpt: 20;TempsPassage: 230;;
+DateHeure: 6/4/13;15:24:31;TPC;NumWpt: 21;TempsPassage: 730;;
+DateHeure: 6/4/13;15:52:14;TPC;NumWpt: 22;TempsPassage: 745;;
+DateHeure: 6/4/13;15:54:30;TPC;NumWpt: 23;TempsPassage: 665;;
+DateHeure: 6/4/13;16:27:21;TPC;NumWpt: 24;TempsPassage: 930;;
+DateHeure: 6/4/13;16:43:14;TPC;NumWpt: 25;TempsPassage: 240;;
+DateHeure: 6/4/13;16:51:52;TPC;NumWpt: 26;TempsPassage: 245;;
+DateHeure: 6/4/13;17:18:58;TPC;NumWpt: 27;TempsPassage: 170;;
+DateHeure: 6/4/13;17:19:34;TPC;NumWpt: 28;TempsPassage: 680;;
+DateHeure: 6/4/13;17:20:40;TPC;NumWpt: 29;TempsPassage: 375;;
+DateHeure: 6/4/13;17:21:33;TPC;NumWpt: 30;TempsPassage: 355;;
+DateHeure: 6/4/13;17:27:02;TPC;NumWpt: 31;TempsPassage: 185;;
+DateHeure: 6/4/13;17:28:09;TPC;NumWpt: 32;TempsPassage: 300;;
+DateHeure: 6/4/13;17:52:40;TPC;NumWpt: 33;TempsPassage: 180;;
+DateHeure: 6/4/13;18:10:59;TPC;NumWpt: 34;TempsPassage: 770;;
+DateHeure: 6/4/13;18:19:16;TPC;NumWpt: 35;TempsPassage: 715;;
+DateHeure: 6/4/13;18:33:33;TPC;NumWpt: 36;TempsPassage: 365;;
+DateHeure: 6/4/13;18:56:07;TPC;NumWpt: 37;TempsPassage: 700;;
+DateHeure: 6/4/13;19:20:46;TPC;NumWpt: 38;TempsPassage: 240;;
+DateHeure: 6/4/13;19:33:04;TPC;NumWpt: 1;TempsPassage: 245;;
+
+<FIN>

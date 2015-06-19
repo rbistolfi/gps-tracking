@@ -6,20 +6,34 @@ from PyQt4.QtGui import *
 from mainWindow import Ui_MainWindow
 from categoryParam import Ui_CatParam
 from editZone import Ui_editZone
+from database import DataBase
 import csv
+import sqlite3
 
 class Principal(QMainWindow):
 	def __init__(self):
 		QMainWindow.__init__(self)
+		self.conn = None
+		self.cursor = None
 
 		self.mainWindow = Ui_MainWindow()
 		self.mainWindow.setupUi(self)
-
+		self.db = DataBase()
+		self.db.open('dakar.sqlite')
+		self.mainTable()
 		self.mainWindow.actionCategory.triggered.connect(self.openCategoryWindow)
 		self.mainWindow.actionDirectoryPath.triggered.connect(self.searchPath)
 		self.mainWindow.actionEditZone.triggered.connect(self.openEditZone)
 
 		self.connect(self.mainWindow.btnConvert,SIGNAL('clicked()'),self.searchFiles)
+	def mainTable(self):
+		rows = self.db.get_tables()
+		self.mainWindow.tblGralStatus.setRowCount(len(rows))
+		for i,table in enumerate(rows):
+			for m,data in enumerate(table):
+				if m != 0:
+					self.mainWindow.tblGralStatus.setItem(i,m - 1,QTableWidgetItem(str(data)))
+				
 
 	def openCategoryWindow(self):
 		mainWindow = CategoryParam().exec_()
