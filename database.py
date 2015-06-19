@@ -18,6 +18,10 @@ class DataBase:
         """Retorna las tablas"""
         q = self.cursor.execute("SELECT * FROM data")
         return q.fetchall()
+    def get_category(self):
+        """Retorna las tablas de Categoria"""
+        q = self.cursor.execute("SELECT * FROM category")
+        return q.fetchall()
     def get_table_info(self, table):
         """Retorna las columnas"""
 
