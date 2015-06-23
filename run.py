@@ -34,8 +34,8 @@ class Principal(QMainWindow):
 		self.db = DataBase()
 		self.db.open('dakar.sqlite')
 		self.inputFiles()
-
-		print self.mainTable.im_func
+		self.mainWindow.tblDz.setColumnWidth(0, 40)
+		self.mainWindow.tblDz.setColumnWidth(1, 70)
 		self.ctimer = QTimer()
 		self.ctimer.start(10000)
 		self.mainWindow.actionCategory.triggered.connect(self.openCategoryWindow)
@@ -45,9 +45,12 @@ class Principal(QMainWindow):
 		self.connect(self.ctimer,SIGNAL("timeout()"), self.checkNewFile)
 		self.connect(self.mainWindow.btnUpdate,SIGNAL('clicked()'),self.inputFiles)
 		self.connect(self.mainWindow.btnNewFile,SIGNAL('clicked()'),self.checkNewFile)
+		self.mainWindow.tblGralStatus.cellClicked.connect(self.otherTable)
+	
 	def mainTable(self):
 		rows = self.db.get_tables()
 		self.mainWindow.tblGralStatus.setRowCount(len(rows))
+
 		for i,table in enumerate(rows):
 			for m,data in enumerate(table):
 				if m != 0:
@@ -60,6 +63,7 @@ class Principal(QMainWindow):
 						color = 'white'
 					self.mainWindow.tblGralStatus.item(i, m - 1).setBackground(QColor(color))
 					self.mainWindow.tblGralStatus.resizeColumnsToContents()
+					self.mainWindow.tblGralStatus.resizeRowsToContents()
 		
 				
 
@@ -163,13 +167,47 @@ class Principal(QMainWindow):
 	def checkNewFile(self):
 		
 		allFiles = glob.glob("gpsfile/*.csv")
-		print allFiles
-		print dir(allFiles)
 		if len(allFiles) > len(self.tmpCountFile):
 			self.mainWindow.lblUpdate.setText("Hay nuevos archivos")
 			self.inputFiles()
 		else:
 			self.mainWindow.lblUpdate.setText(" ")
+
+	def otherTable(self):
+		rowSelected = self.mainWindow.tblGralStatus.currentIndex()
+		numComptetitor = self.mainWindow.tblGralStatus.item(rowSelected.row(),0)
+
+		conn = sqlite3.connect('dakar.sqlite')
+		cursor = conn.cursor()
+
+		query = "SELECT * FROM data WHERE competidor = '%i'"%(int(numComptetitor.text()))
+		cursor.execute(query)
+		check = cursor.fetchone()
+
+		self.mainWindow.tblData.setItem(-1,1,QTableWidgetItem(str(check[1])))
+		self.mainWindow.tblData.setItem(0,1,QTableWidgetItem(str(check[10])))
+		self.mainWindow.tblData.setItem(1,1,QTableWidgetItem(str(check[2])))
+		#self.mainWindow.tblData.resizeColumnsToContents()
+		self.mainWindow.tblData.resizeRowsToContents()
+		query = "SELECT dz FROM dz WHERE competitor = '%i'"%(int(numComptetitor.text()))
+		cursor.execute(query)		
+
+		check = cursor.fetchall()
+
+		if len(check) == 0:
+			self.mainWindow.tblDz.setHorizontalHeaderLabels(['DZ','OK'])
+			self.mainWindow.tblDz.setRowCount(0)
+		else:
+			self.mainWindow.tblDz.setHorizontalHeaderLabels(['DZ','NOK'])
+
+			self.mainWindow.tblDz.setRowCount(len(check))
+			for m,data in enumerate(check):
+				self.mainWindow.tblDz.setItem(m,1,QTableWidgetItem(str(data[0])))
+				self.mainWindow.tblDz.setColumnWidth(0, 40)
+				self.mainWindow.tblDz.setColumnWidth(1, 70)
+				self.mainWindow.tblDz.resizeRowsToContents()
+				
+			
 
 
    

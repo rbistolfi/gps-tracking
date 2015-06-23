@@ -337,8 +337,8 @@
      <rect>
       <x>730</x>
       <y>220</y>
-      <width>202</width>
-      <height>41</height>
+      <width>151</width>
+      <height>121</height>
      </rect>
     </property>
     <column>
@@ -356,34 +356,14 @@
     <property name="geometry">
      <rect>
       <x>730</x>
-      <y>320</y>
-      <width>202</width>
-      <height>41</height>
+      <y>350</y>
+      <width>151</width>
+      <height>121</height>
      </rect>
     </property>
     <column>
      <property name="text">
       <string>DZ</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string/>
-     </property>
-    </column>
-   </widget>
-   <widget class="QTableWidget" name="tblDisc">
-    <property name="geometry">
-     <rect>
-      <x>730</x>
-      <y>400</y>
-      <width>202</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <column>
-     <property name="text">
-      <string>DISC</string>
      </property>
     </column>
     <column>
@@ -402,7 +382,6 @@
    <zorder>pgFile</zorder>
    <zorder>tblWpt</zorder>
    <zorder>tblDz</zorder>
-   <zorder>tblDisc</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
