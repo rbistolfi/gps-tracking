@@ -29,13 +29,19 @@ class Principal(QMainWindow):
 		self.minCar = 0
 		self.maxCar = 0
 		self.tmpCountFile = 0
+		self.countZone = []
 		self.mainWindow = Ui_MainWindow()
 		self.mainWindow.setupUi(self)
 		self.db = DataBase()
 		self.db.open('dakar.sqlite')
+		
+		self.countZones()
+		self.countVehicles()
 		self.inputFiles()
+
 		self.mainWindow.tblDz.setColumnWidth(0, 40)
 		self.mainWindow.tblDz.setColumnWidth(1, 70)
+
 		self.ctimer = QTimer()
 		self.ctimer.start(10000)
 		self.mainWindow.actionCategory.triggered.connect(self.openCategoryWindow)
@@ -46,6 +52,18 @@ class Principal(QMainWindow):
 		self.connect(self.mainWindow.btnUpdate,SIGNAL('clicked()'),self.inputFiles)
 		self.connect(self.mainWindow.btnNewFile,SIGNAL('clicked()'),self.checkNewFile)
 		self.mainWindow.tblGralStatus.cellClicked.connect(self.otherTable)
+	def countZones(self):
+		conn = sqlite3.connect('dakar.sqlite')
+		cursor = conn.cursor()
+
+		
+		query = "SELECT numZone FROM zone "
+		cursor.execute(query)
+		check = cursor.fetchall()
+		for i in check:
+			self.countZone.append(i[0])
+
+
 	
 	def mainTable(self):
 		rows = self.db.get_tables()
@@ -87,7 +105,11 @@ class Principal(QMainWindow):
 		self.mainWindow.lblPath.setText("Current Path: " + path)
 		allFiles = glob.glob(path + "/*.csv")
 		self.tmpCountFile = allFiles
+
+		findWord = False
+
 		for q,oneFile in enumerate(allFiles):
+			zonePassed = []
 			f = open( oneFile, 'r')
 			allData = f.readlines()
 			conn = sqlite3.connect('dakar.sqlite')
@@ -107,7 +129,6 @@ class Principal(QMainWindow):
 					category = "Quad"
 				elif int(numComptetitor) >= self.minCar and int(numComptetitor) <= self.maxCar:
 					category = "Car"
-				
 				if int(allData[8].split(";")[1]) == 0:
 					wpt = "OK"
 				else:
@@ -134,8 +155,25 @@ class Principal(QMainWindow):
 				mi_query = "INSERT INTO data (competidor,nombre, orden,categoria,wpt,dz,disc,cod,version,gps,obs) VALUES ('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')"%(numComptetitor,nameCompetitor,numOrder,category,wpt,dz,disc,codNum,version,gpsNumber,obs)
 				cursor.execute(mi_query)
 				conn.commit()
-			self.countVehicles()
-			self.mainTable()
+
+
+				for line in allData:
+					try:
+						if findWord:
+							tmpnum = line.split(";")[3]
+							num = tmpnum.split(":")[1]
+							zonePassed.append(int(num))
+						if line.startswith('InfosChronos') :
+							findWord = True
+					except:
+						pass
+				zoneDismiss = list(set(self.countZone) - set(zonePassed))
+				for a in zoneDismiss:
+					mi_query = "INSERT INTO zonedismiss (competitor,zone) VALUES ('%s','%s')"%(numComptetitor,a)
+					cursor.execute(mi_query)
+					conn.commit()
+		self.countVehicles()
+		self.mainTable()
 
 	def countVehicles(self):
 		self.db = DataBase()
@@ -165,8 +203,9 @@ class Principal(QMainWindow):
 		self.mainWindow.lnCountQuad.setText(str(countQuad))
 		self.mainWindow.lnCountCar.setText(str(countCar))
 	def checkNewFile(self):
-		
-		allFiles = glob.glob("gpsfile/*.csv")
+		f = open('path.txt')
+		path = f.readline()
+		allFiles = glob.glob(path + "/*.csv")
 		if len(allFiles) > len(self.tmpCountFile):
 			self.mainWindow.lblUpdate.setText("Hay nuevos archivos")
 			self.inputFiles()
@@ -187,11 +226,10 @@ class Principal(QMainWindow):
 		self.mainWindow.tblData.setItem(-1,1,QTableWidgetItem(str(check[1])))
 		self.mainWindow.tblData.setItem(0,1,QTableWidgetItem(str(check[10])))
 		self.mainWindow.tblData.setItem(1,1,QTableWidgetItem(str(check[2])))
-		#self.mainWindow.tblData.resizeColumnsToContents()
 		self.mainWindow.tblData.resizeRowsToContents()
+
 		query = "SELECT dz FROM dz WHERE competitor = '%i'"%(int(numComptetitor.text()))
 		cursor.execute(query)		
-
 		check = cursor.fetchall()
 
 		if len(check) == 0:
@@ -206,7 +244,22 @@ class Principal(QMainWindow):
 				self.mainWindow.tblDz.setColumnWidth(0, 40)
 				self.mainWindow.tblDz.setColumnWidth(1, 70)
 				self.mainWindow.tblDz.resizeRowsToContents()
-				
+
+		query = "SELECT zone FROM zonedismiss WHERE competitor = '%i'"%(int(numComptetitor.text()))
+		cursor.execute(query)		
+		check = cursor.fetchall()	
+		if len(check) == 0:
+			self.mainWindow.tblWpt.setHorizontalHeaderLabels(['WPT','OK'])
+			self.mainWindow.tblWpt.setRowCount(0)
+		else:
+			self.mainWindow.tblWpt.setHorizontalHeaderLabels(['WPT','NOK'])
+			self.mainWindow.tblWpt.setRowCount(len(check))
+			for m,data in enumerate(check):
+				self.mainWindow.tblWpt.setItem(m,1,QTableWidgetItem(str(data[0])))
+				self.mainWindow.tblWpt.setColumnWidth(0, 40)
+				self.mainWindow.tblWpt.setColumnWidth(1, 70)
+				self.mainWindow.tblWpt.resizeColumnsToContents()
+				self.mainWindow.tblWpt.resizeRowsToContents()
 			
 
 

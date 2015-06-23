@@ -256,10 +256,10 @@
    <widget class="QTableWidget" name="tblData">
     <property name="geometry">
      <rect>
-      <x>730</x>
-      <y>10</y>
-      <width>202</width>
-      <height>177</height>
+      <x>731</x>
+      <y>11</y>
+      <width>239</width>
+      <height>151</height>
      </rect>
     </property>
     <row>
@@ -336,9 +336,9 @@
     <property name="geometry">
      <rect>
       <x>730</x>
-      <y>220</y>
-      <width>151</width>
-      <height>121</height>
+      <y>190</y>
+      <width>121</width>
+      <height>261</height>
      </rect>
     </property>
     <column>
@@ -355,10 +355,10 @@
    <widget class="QTableWidget" name="tblDz">
     <property name="geometry">
      <rect>
-      <x>730</x>
-      <y>350</y>
+      <x>860</x>
+      <y>190</y>
       <width>151</width>
-      <height>121</height>
+      <height>261</height>
      </rect>
     </property>
     <column>

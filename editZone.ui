@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>660</width>
-    <height>555</height>
+    <width>375</width>
+    <height>364</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -62,83 +62,45 @@
     <string>Delete All Zones</string>
    </property>
   </widget>
-  <widget class="QGroupBox" name="groupBox">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>180</x>
-     <y>140</y>
-     <width>121</width>
-     <height>191</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">border: 2px solid gray; 
-     border-radius: 3px;</string>
-   </property>
-   <property name="title">
-    <string>Add New Zones</string>
-   </property>
-   <widget class="QWidget" name="">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>30</y>
-      <width>81</width>
-      <height>135</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout_2">
-     <item alignment="Qt::AlignHCenter">
-      <widget class="QLabel" name="label_2">
-       <property name="text">
-        <string>Num Zone</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="lnNumZone"/>
-     </item>
-     <item alignment="Qt::AlignHCenter">
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>Zone</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="lnZone"/>
-     </item>
-     <item>
-      <widget class="QPushButton" name="btnAdd">
-       <property name="text">
-        <string>Add</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-  </widget>
-  <widget class="QGroupBox" name="">
-   <property name="geometry">
-    <rect>
-     <x>190</x>
+     <x>210</x>
      <y>190</y>
-     <width>91</width>
+     <width>87</width>
      <height>141</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout"/>
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <item alignment="Qt::AlignHCenter">
+     <widget class="QLabel" name="label_2">
+      <property name="text">
+       <string>Num Zone</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="lnNumZone"/>
+    </item>
+    <item alignment="Qt::AlignHCenter">
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>Zone</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="lnZone"/>
+    </item>
+    <item>
+     <widget class="QPushButton" name="btnAdd">
+      <property name="text">
+       <string>Add</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
-  <zorder>buttonBox</zorder>
-  <zorder>tblZone</zorder>
-  <zorder>btnDeleteZone</zorder>
-  <zorder>label_2</zorder>
-  <zorder>lnZone</zorder>
-  <zorder>btnAdd</zorder>
-  <zorder>lnNumZone</zorder>
-  <zorder>label</zorder>
-  <zorder>label</zorder>
-  <zorder>groupBox</zorder>
  </widget>
  <resources/>
  <connections>

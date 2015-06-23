@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'mainWindow.ui'
 #
-# Created: Tue Jun 23 12:48:15 2015
+# Created: Tue Jun 23 18:41:41 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -120,7 +120,7 @@ class Ui_MainWindow(object):
         item = QtGui.QTableWidgetItem()
         self.tblGralStatus.setHorizontalHeaderItem(10, item)
         self.tblData = QtGui.QTableWidget(self.centralwidget)
-        self.tblData.setGeometry(QtCore.QRect(730, 10, 202, 177))
+        self.tblData.setGeometry(QtCore.QRect(731, 11, 239, 151))
         self.tblData.setObjectName(_fromUtf8("tblData"))
         self.tblData.setColumnCount(1)
         self.tblData.setRowCount(5)
@@ -148,7 +148,7 @@ class Ui_MainWindow(object):
         self.pgFile.setProperty("value", 0)
         self.pgFile.setObjectName(_fromUtf8("pgFile"))
         self.tblWpt = QtGui.QTableWidget(self.centralwidget)
-        self.tblWpt.setGeometry(QtCore.QRect(730, 220, 151, 121))
+        self.tblWpt.setGeometry(QtCore.QRect(730, 190, 121, 261))
         self.tblWpt.setObjectName(_fromUtf8("tblWpt"))
         self.tblWpt.setColumnCount(2)
         self.tblWpt.setRowCount(0)
@@ -157,7 +157,7 @@ class Ui_MainWindow(object):
         item = QtGui.QTableWidgetItem()
         self.tblWpt.setHorizontalHeaderItem(1, item)
         self.tblDz = QtGui.QTableWidget(self.centralwidget)
-        self.tblDz.setGeometry(QtCore.QRect(730, 350, 151, 121))
+        self.tblDz.setGeometry(QtCore.QRect(860, 190, 151, 261))
         self.tblDz.setObjectName(_fromUtf8("tblDz"))
         self.tblDz.setColumnCount(2)
         self.tblDz.setRowCount(0)

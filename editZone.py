@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'editZone.ui'
 #
-# Created: Mon Jun 22 11:45:25 2015
+# Created: Tue Jun 23 18:41:59 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,7 +26,7 @@ except AttributeError:
 class Ui_editZone(object):
     def setupUi(self, editZone):
         editZone.setObjectName(_fromUtf8("editZone"))
-        editZone.resize(660, 555)
+        editZone.resize(375, 364)
         self.buttonBox = QtGui.QDialogButtonBox(editZone)
         self.buttonBox.setGeometry(QtCore.QRect(210, 30, 81, 241))
         self.buttonBox.setOrientation(QtCore.Qt.Vertical)
@@ -44,37 +44,27 @@ class Ui_editZone(object):
         self.btnDeleteZone = QtGui.QPushButton(editZone)
         self.btnDeleteZone.setGeometry(QtCore.QRect(30, 310, 111, 27))
         self.btnDeleteZone.setObjectName(_fromUtf8("btnDeleteZone"))
-        self.groupBox = QtGui.QGroupBox(editZone)
-        self.groupBox.setGeometry(QtCore.QRect(180, 140, 121, 191))
-        self.groupBox.setStyleSheet(_fromUtf8("border: 2px solid gray; \n"
-"     border-radius: 3px;"))
-        self.groupBox.setObjectName(_fromUtf8("groupBox"))
-        self.widget = QtGui.QWidget(self.groupBox)
-        self.widget.setGeometry(QtCore.QRect(10, 30, 81, 135))
-        self.widget.setObjectName(_fromUtf8("widget"))
-        self.verticalLayout_2 = QtGui.QVBoxLayout(self.widget)
+        self.layoutWidget = QtGui.QWidget(editZone)
+        self.layoutWidget.setGeometry(QtCore.QRect(210, 190, 87, 141))
+        self.layoutWidget.setObjectName(_fromUtf8("layoutWidget"))
+        self.verticalLayout_2 = QtGui.QVBoxLayout(self.layoutWidget)
         self.verticalLayout_2.setMargin(0)
         self.verticalLayout_2.setObjectName(_fromUtf8("verticalLayout_2"))
-        self.label_2 = QtGui.QLabel(self.widget)
+        self.label_2 = QtGui.QLabel(self.layoutWidget)
         self.label_2.setObjectName(_fromUtf8("label_2"))
         self.verticalLayout_2.addWidget(self.label_2)
-        self.lnNumZone = QtGui.QLineEdit(self.widget)
+        self.lnNumZone = QtGui.QLineEdit(self.layoutWidget)
         self.lnNumZone.setObjectName(_fromUtf8("lnNumZone"))
         self.verticalLayout_2.addWidget(self.lnNumZone)
-        self.label = QtGui.QLabel(self.widget)
+        self.label = QtGui.QLabel(self.layoutWidget)
         self.label.setObjectName(_fromUtf8("label"))
         self.verticalLayout_2.addWidget(self.label)
-        self.lnZone = QtGui.QLineEdit(self.widget)
+        self.lnZone = QtGui.QLineEdit(self.layoutWidget)
         self.lnZone.setObjectName(_fromUtf8("lnZone"))
         self.verticalLayout_2.addWidget(self.lnZone)
-        self.btnAdd = QtGui.QPushButton(self.widget)
+        self.btnAdd = QtGui.QPushButton(self.layoutWidget)
         self.btnAdd.setObjectName(_fromUtf8("btnAdd"))
         self.verticalLayout_2.addWidget(self.btnAdd)
-        self.groupbox = QtGui.QGroupBox(editZone)
-        self.groupbox.setGeometry(QtCore.QRect(190, 190, 91, 141))
-        self.groupbox.setObjectName(_fromUtf8("groupbox"))
-        self.verticalLayout = QtGui.QVBoxLayout(self.groupbox)
-        self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
 
         self.retranslateUi(editZone)
         QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("accepted()")), editZone.accept)
@@ -88,7 +78,6 @@ class Ui_editZone(object):
         item = self.tblZone.horizontalHeaderItem(1)
         item.setText(_translate("editZone", "Zone", None))
         self.btnDeleteZone.setText(_translate("editZone", "Delete All Zones", None))
-        self.groupBox.setTitle(_translate("editZone", "Add New Zones", None))
         self.label_2.setText(_translate("editZone", "Num Zone", None))
         self.label.setText(_translate("editZone", "Zone", None))
         self.btnAdd.setText(_translate("editZone", "Add", None))
