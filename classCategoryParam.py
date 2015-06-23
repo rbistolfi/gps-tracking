@@ -3,16 +3,9 @@
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 
-from mainWindow import Ui_MainWindow
 from categoryParam import Ui_CatParam
-from editZone import Ui_editZone
 
-from classEditZone import EditZone
-
-import sys
 from database import DataBase
-import glob
-import csv
 import sqlite3
 
 

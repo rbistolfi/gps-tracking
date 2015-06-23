@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'mainWindow.ui'
 #
-# Created: Fri Jun 19 15:03:24 2015
+# Created: Mon Jun 22 11:00:03 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,20 +26,20 @@ except AttributeError:
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
-        MainWindow.resize(1240, 667)
+        MainWindow.resize(1062, 650)
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
         self.lblPath = QtGui.QLabel(self.centralwidget)
-        self.lblPath.setGeometry(QtCore.QRect(0, 590, 751, 21))
+        self.lblPath.setGeometry(QtCore.QRect(0, 580, 1062, 21))
         self.lblPath.setFrameShape(QtGui.QFrame.Panel)
         self.lblPath.setFrameShadow(QtGui.QFrame.Raised)
         self.lblPath.setText(_fromUtf8(""))
         self.lblPath.setObjectName(_fromUtf8("lblPath"))
-        self.btnConvert = QtGui.QPushButton(self.centralwidget)
-        self.btnConvert.setGeometry(QtCore.QRect(480, 510, 85, 27))
-        self.btnConvert.setObjectName(_fromUtf8("btnConvert"))
+        self.btnUpdate = QtGui.QPushButton(self.centralwidget)
+        self.btnUpdate.setGeometry(QtCore.QRect(420, 510, 85, 27))
+        self.btnUpdate.setObjectName(_fromUtf8("btnUpdate"))
         self.groupBox = QtGui.QGroupBox(self.centralwidget)
-        self.groupBox.setGeometry(QtCore.QRect(10, 50, 721, 161))
+        self.groupBox.setGeometry(QtCore.QRect(10, 50, 702, 161))
         self.groupBox.setStyleSheet(_fromUtf8("background-color: rgb(122, 155, 216)"))
         self.groupBox.setTitle(_fromUtf8(""))
         self.groupBox.setObjectName(_fromUtf8("groupBox"))
@@ -77,9 +77,9 @@ class Ui_MainWindow(object):
         self.lblAuto.setFrameShape(QtGui.QFrame.WinPanel)
         self.lblAuto.setFrameShadow(QtGui.QFrame.Raised)
         self.lblAuto.setObjectName(_fromUtf8("lblAuto"))
-        self.lnCountAuto = QtGui.QLineEdit(self.splitter)
-        self.lnCountAuto.setStyleSheet(_fromUtf8("background-color: rgb(250, 250, 250)"))
-        self.lnCountAuto.setObjectName(_fromUtf8("lnCountAuto"))
+        self.lnCountCar = QtGui.QLineEdit(self.splitter)
+        self.lnCountCar.setStyleSheet(_fromUtf8("background-color: rgb(250, 250, 250)"))
+        self.lnCountCar.setObjectName(_fromUtf8("lnCountCar"))
         self.tblGralStatus = QtGui.QTableWidget(self.centralwidget)
         self.tblGralStatus.setGeometry(QtCore.QRect(10, 230, 702, 271))
         self.tblGralStatus.setMinimumSize(QtCore.QSize(120, 271))
@@ -120,13 +120,24 @@ class Ui_MainWindow(object):
         item = QtGui.QTableWidgetItem()
         self.tblGralStatus.setHorizontalHeaderItem(10, item)
         self.tableWidget = QtGui.QTableWidget(self.centralwidget)
-        self.tableWidget.setGeometry(QtCore.QRect(770, 40, 241, 461))
+        self.tableWidget.setGeometry(QtCore.QRect(720, 80, 241, 151))
         self.tableWidget.setObjectName(_fromUtf8("tableWidget"))
         self.tableWidget.setColumnCount(0)
         self.tableWidget.setRowCount(0)
+        self.lblUpdate = QtGui.QLabel(self.centralwidget)
+        self.lblUpdate.setGeometry(QtCore.QRect(10, 520, 371, 17))
+        self.lblUpdate.setText(_fromUtf8(""))
+        self.lblUpdate.setObjectName(_fromUtf8("lblUpdate"))
+        self.btnNewFile = QtGui.QPushButton(self.centralwidget)
+        self.btnNewFile.setGeometry(QtCore.QRect(550, 510, 85, 27))
+        self.btnNewFile.setObjectName(_fromUtf8("btnNewFile"))
+        self.pgFile = QtGui.QProgressBar(self.centralwidget)
+        self.pgFile.setGeometry(QtCore.QRect(710, 530, 118, 23))
+        self.pgFile.setProperty("value", 0)
+        self.pgFile.setObjectName(_fromUtf8("pgFile"))
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1240, 27))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1062, 27))
         self.menubar.setObjectName(_fromUtf8("menubar"))
         self.menuFile = QtGui.QMenu(self.menubar)
         self.menuFile.setObjectName(_fromUtf8("menuFile"))
@@ -166,7 +177,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(_translate("MainWindow", "Dakar 2015", None))
-        self.btnConvert.setText(_translate("MainWindow", "Convert", None))
+        self.btnUpdate.setText(_translate("MainWindow", "Update", None))
         self.label.setText(_translate("MainWindow", "DESAFIO RUTA 40 - 2015                     ETAPA    1", None))
         self.lblMoto.setText(_translate("MainWindow", "Motos", None))
         self.lblQuad.setText(_translate("MainWindow", "Quad", None))
@@ -193,6 +204,7 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "GPS N°", None))
         item = self.tblGralStatus.horizontalHeaderItem(10)
         item.setText(_translate("MainWindow", "Observaciones", None))
+        self.btnNewFile.setText(_translate("MainWindow", "New Files", None))
         self.menuFile.setTitle(_translate("MainWindow", "File", None))
         self.menuOpen.setTitle(_translate("MainWindow", "Open", None))
         self.menuParametres.setTitle(_translate("MainWindow", "Parametres", None))
