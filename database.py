@@ -1,10 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#       database.py
-#
-#       Copyright 2013 Recursos Python - www.recursospython.com
-#       
+      
 import sqlite3
 class DataBase:
     def __init__(self):

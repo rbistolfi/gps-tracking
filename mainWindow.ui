@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1062</width>
-    <height>597</height>
+    <width>1209</width>
+    <height>650</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,8 +18,8 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>590</y>
-      <width>751</width>
+      <y>480</y>
+      <width>1062</width>
       <height>21</height>
      </rect>
     </property>
@@ -33,24 +33,11 @@
      <string/>
     </property>
    </widget>
-   <widget class="QPushButton" name="btnConvert">
-    <property name="geometry">
-     <rect>
-      <x>480</x>
-      <y>510</y>
-      <width>85</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Convert</string>
-    </property>
-   </widget>
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>50</y>
+      <y>10</y>
       <width>702</width>
       <height>161</height>
      </rect>
@@ -146,7 +133,7 @@
        <string>Autos</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lnCountAuto">
+     <widget class="QLineEdit" name="lnCountCar">
       <property name="styleSheet">
        <string notr="true">background-color: rgb(250, 250, 250)</string>
       </property>
@@ -157,7 +144,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>230</y>
+      <y>190</y>
       <width>702</width>
       <height>271</height>
      </rect>
@@ -253,23 +240,135 @@
      </property>
     </column>
    </widget>
-   <widget class="QTableWidget" name="tableWidget">
+   <widget class="QTableWidget" name="tblData">
     <property name="geometry">
      <rect>
-      <x>770</x>
-      <y>40</y>
-      <width>241</width>
-      <height>461</height>
+      <x>731</x>
+      <y>10</y>
+      <width>231</width>
+      <height>152</height>
+     </rect>
+    </property>
+    <row>
+     <property name="text">
+      <string>Competidor N°:</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>GPS N°:</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>Nombre:</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>Fecha:</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>Hora:</string>
+     </property>
+    </row>
+    <column>
+     <property name="text">
+      <string/>
+     </property>
+    </column>
+   </widget>
+   <widget class="QLabel" name="lblUpdate">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>480</y>
+      <width>371</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QTableWidget" name="tblWpt">
+    <property name="geometry">
+     <rect>
+      <x>730</x>
+      <y>190</y>
+      <width>121</width>
+      <height>261</height>
+     </rect>
+    </property>
+    <column>
+     <property name="text">
+      <string>WPT</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string/>
+     </property>
+    </column>
+   </widget>
+   <widget class="QTableWidget" name="tblDz">
+    <property name="geometry">
+     <rect>
+      <x>860</x>
+      <y>190</y>
+      <width>151</width>
+      <height>261</height>
+     </rect>
+    </property>
+    <column>
+     <property name="text">
+      <string>DZ</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string/>
+     </property>
+    </column>
+   </widget>
+   <widget class="QListWidget" name="lstWpt">
+    <property name="geometry">
+     <rect>
+      <x>1020</x>
+      <y>190</y>
+      <width>91</width>
+      <height>261</height>
      </rect>
     </property>
    </widget>
+   <widget class="QListWidget" name="lstDz">
+    <property name="geometry">
+     <rect>
+      <x>1120</x>
+      <y>190</y>
+      <width>91</width>
+      <height>261</height>
+     </rect>
+    </property>
+   </widget>
+   <zorder>tblGralStatus</zorder>
+   <zorder>lblPath</zorder>
+   <zorder>groupBox</zorder>
+   <zorder>tblData</zorder>
+   <zorder>lblUpdate</zorder>
+   <zorder>tblWpt</zorder>
+   <zorder>tblDz</zorder>
+   <zorder>lstWpt</zorder>
+   <zorder>lstDz</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1062</width>
+     <width>1209</width>
      <height>27</height>
     </rect>
    </property>
