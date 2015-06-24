@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1062</width>
+    <width>1209</width>
     <height>650</height>
    </rect>
   </property>
@@ -18,7 +18,7 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>580</y>
+      <y>480</y>
       <width>1062</width>
       <height>21</height>
      </rect>
@@ -31,19 +31,6 @@
     </property>
     <property name="text">
      <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnUpdate">
-    <property name="geometry">
-     <rect>
-      <x>420</x>
-      <y>470</y>
-      <width>85</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Update</string>
     </property>
    </widget>
    <widget class="QGroupBox" name="groupBox">
@@ -257,9 +244,9 @@
     <property name="geometry">
      <rect>
       <x>731</x>
-      <y>11</y>
-      <width>239</width>
-      <height>151</height>
+      <y>10</y>
+      <width>231</width>
+      <height>152</height>
      </rect>
     </property>
     <row>
@@ -306,32 +293,6 @@
      <string/>
     </property>
    </widget>
-   <widget class="QPushButton" name="btnNewFile">
-    <property name="geometry">
-     <rect>
-      <x>550</x>
-      <y>470</y>
-      <width>85</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>New Files</string>
-    </property>
-   </widget>
-   <widget class="QProgressBar" name="pgFile">
-    <property name="geometry">
-     <rect>
-      <x>710</x>
-      <y>490</y>
-      <width>118</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="value">
-     <number>0</number>
-    </property>
-   </widget>
    <widget class="QTableWidget" name="tblWpt">
     <property name="geometry">
      <rect>
@@ -372,23 +333,42 @@
      </property>
     </column>
    </widget>
+   <widget class="QListWidget" name="lstWpt">
+    <property name="geometry">
+     <rect>
+      <x>1020</x>
+      <y>190</y>
+      <width>91</width>
+      <height>261</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="lstDz">
+    <property name="geometry">
+     <rect>
+      <x>1120</x>
+      <y>190</y>
+      <width>91</width>
+      <height>261</height>
+     </rect>
+    </property>
+   </widget>
    <zorder>tblGralStatus</zorder>
    <zorder>lblPath</zorder>
-   <zorder>btnUpdate</zorder>
    <zorder>groupBox</zorder>
    <zorder>tblData</zorder>
    <zorder>lblUpdate</zorder>
-   <zorder>btnNewFile</zorder>
-   <zorder>pgFile</zorder>
    <zorder>tblWpt</zorder>
    <zorder>tblDz</zorder>
+   <zorder>lstWpt</zorder>
+   <zorder>lstDz</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1062</width>
+     <width>1209</width>
      <height>27</height>
     </rect>
    </property>

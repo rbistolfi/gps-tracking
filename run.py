@@ -41,6 +41,8 @@ class Principal(QMainWindow):
 
 		self.mainWindow.tblDz.setColumnWidth(0, 40)
 		self.mainWindow.tblDz.setColumnWidth(1, 70)
+		self.mainWindow.tblData.resizeRowsToContents()
+		self.mainWindow.tblData.setColumnWidth(1, 70)
 
 		self.ctimer = QTimer()
 		self.ctimer.start(10000)
@@ -49,8 +51,6 @@ class Principal(QMainWindow):
 		self.mainWindow.actionEditZone.triggered.connect(self.openEditZone)
 
 		self.connect(self.ctimer,SIGNAL("timeout()"), self.checkNewFile)
-		self.connect(self.mainWindow.btnUpdate,SIGNAL('clicked()'),self.inputFiles)
-		self.connect(self.mainWindow.btnNewFile,SIGNAL('clicked()'),self.checkNewFile)
 		self.mainWindow.tblGralStatus.cellClicked.connect(self.otherTable)
 	def countZones(self):
 		conn = sqlite3.connect('dakar.sqlite')
@@ -82,6 +82,7 @@ class Principal(QMainWindow):
 					self.mainWindow.tblGralStatus.item(i, m - 1).setBackground(QColor(color))
 					self.mainWindow.tblGralStatus.resizeColumnsToContents()
 					self.mainWindow.tblGralStatus.resizeRowsToContents()
+		self.mainWindow.tblGralStatus.setSortingEnabled(True)
 		
 				
 
@@ -226,40 +227,49 @@ class Principal(QMainWindow):
 		self.mainWindow.tblData.setItem(-1,1,QTableWidgetItem(str(check[1])))
 		self.mainWindow.tblData.setItem(0,1,QTableWidgetItem(str(check[10])))
 		self.mainWindow.tblData.setItem(1,1,QTableWidgetItem(str(check[2])))
-		self.mainWindow.tblData.resizeRowsToContents()
+
 
 		query = "SELECT dz FROM dz WHERE competitor = '%i'"%(int(numComptetitor.text()))
 		cursor.execute(query)		
 		check = cursor.fetchall()
 
 		if len(check) == 0:
+			self.mainWindow.lstDz.clear()
+			self.mainWindow.lstDz.addItem(QListWidgetItem("Dz: OK"))
 			self.mainWindow.tblDz.setHorizontalHeaderLabels(['DZ','OK'])
 			self.mainWindow.tblDz.setRowCount(0)
 		else:
+			self.mainWindow.lstDz.clear()
+			self.mainWindow.lstDz.addItem(QListWidgetItem("Dz: NOK"))
 			self.mainWindow.tblDz.setHorizontalHeaderLabels(['DZ','NOK'])
-
 			self.mainWindow.tblDz.setRowCount(len(check))
 			for m,data in enumerate(check):
 				self.mainWindow.tblDz.setItem(m,1,QTableWidgetItem(str(data[0])))
 				self.mainWindow.tblDz.setColumnWidth(0, 40)
 				self.mainWindow.tblDz.setColumnWidth(1, 70)
 				self.mainWindow.tblDz.resizeRowsToContents()
+				self.mainWindow.lstDz.addItem(QListWidgetItem("%s"%str(data[0])))
 
 		query = "SELECT zone FROM zonedismiss WHERE competitor = '%i'"%(int(numComptetitor.text()))
 		cursor.execute(query)		
 		check = cursor.fetchall()	
 		if len(check) == 0:
+			self.mainWindow.lstWpt.clear()
 			self.mainWindow.tblWpt.setHorizontalHeaderLabels(['WPT','OK'])
 			self.mainWindow.tblWpt.setRowCount(0)
+			self.mainWindow.lstWpt.addItem(QListWidgetItem("WPT: OK"))
 		else:
+			self.mainWindow.lstWpt.clear()
 			self.mainWindow.tblWpt.setHorizontalHeaderLabels(['WPT','NOK'])
 			self.mainWindow.tblWpt.setRowCount(len(check))
+			self.mainWindow.lstWpt.addItem(QListWidgetItem("WPT: Nok"))
 			for m,data in enumerate(check):
 				self.mainWindow.tblWpt.setItem(m,1,QTableWidgetItem(str(data[0])))
 				self.mainWindow.tblWpt.setColumnWidth(0, 40)
 				self.mainWindow.tblWpt.setColumnWidth(1, 70)
 				self.mainWindow.tblWpt.resizeColumnsToContents()
 				self.mainWindow.tblWpt.resizeRowsToContents()
+				self.mainWindow.lstWpt.addItem(QListWidgetItem("            %s"%str(data[0])))
 			
 
 
