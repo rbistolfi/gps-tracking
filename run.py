@@ -39,10 +39,11 @@ class Principal(QMainWindow):
 		self.countVehicles()
 		self.inputFiles()
 
-		self.mainWindow.tblDz.setColumnWidth(0, 40)
-		self.mainWindow.tblDz.setColumnWidth(1, 70)
+		
 		self.mainWindow.tblData.resizeRowsToContents()
 		self.mainWindow.tblData.setColumnWidth(1, 70)
+		self.mainWindow.lblWpt.setAlignment(Qt.AlignHCenter)
+		self.mainWindow.lblDz.setAlignment(Qt.AlignHCenter)
 
 		self.ctimer = QTimer()
 		self.ctimer.start(10000)
@@ -53,17 +54,9 @@ class Principal(QMainWindow):
 		self.connect(self.ctimer,SIGNAL("timeout()"), self.checkNewFile)
 		self.mainWindow.tblGralStatus.cellClicked.connect(self.otherTable)
 	def countZones(self):
-		conn = sqlite3.connect('dakar.sqlite')
-		cursor = conn.cursor()
-
-		
-		query = "SELECT numZone FROM zone "
-		cursor.execute(query)
-		check = cursor.fetchall()
+		check = self.db.countZone()
 		for i in check:
 			self.countZone.append(i[0])
-
-
 	
 	def mainTable(self):
 		rows = self.db.get_tables()
@@ -74,11 +67,11 @@ class Principal(QMainWindow):
 				if m != 0:
 					self.mainWindow.tblGralStatus.setItem(i,m - 1,QTableWidgetItem(str(data)))
 					if str(data) == 'OK':
-						color = 'green'
+						color = QColor(133, 222, 84)
 					elif str(data) == 'NOK':
-						color = 'red'
+						color = QColor(255, 64, 16)
 					else:
-						color = 'white'
+						color = QColor("white")
 					self.mainWindow.tblGralStatus.item(i, m - 1).setBackground(QColor(color))
 					self.mainWindow.tblGralStatus.resizeColumnsToContents()
 					self.mainWindow.tblGralStatus.resizeRowsToContents()
@@ -113,22 +106,20 @@ class Principal(QMainWindow):
 			zonePassed = []
 			f = open( oneFile, 'r')
 			allData = f.readlines()
-			conn = sqlite3.connect('dakar.sqlite')
-			cursor = conn.cursor()
+			
 
-			numComptetitor = allData[2].split(";")[1]
-			query = "SELECT * FROM data WHERE competidor = '%i'"%(int(numComptetitor))
-			cursor.execute(query)
-			check = cursor.fetchone()
+
+			numCompetitor = allData[2].split(";")[1]
+			check = self.db.getDataCompetitor(int(numCompetitor))
 			if check == None:
 				nameCompetitor = " "
 				numOrder = "1"
 				category = "Moto"
-				if int(numComptetitor) >= self.minMoto and int(numComptetitor) <= self.maxMoto:
+				if int(numCompetitor) >= self.minMoto and int(numCompetitor) <= self.maxMoto:
 					category = "Moto"
-				elif int(numComptetitor) >= self.minQuad and int(numComptetitor) <= self.maxQuad:
+				elif int(numCompetitor) >= self.minQuad and int(numCompetitor) <= self.maxQuad:
 					category = "Quad"
-				elif int(numComptetitor) >= self.minCar and int(numComptetitor) <= self.maxCar:
+				elif int(numCompetitor) >= self.minCar and int(numCompetitor) <= self.maxCar:
 					category = "Car"
 				if int(allData[8].split(";")[1]) == 0:
 					wpt = "OK"
@@ -146,18 +137,13 @@ class Principal(QMainWindow):
 					dzDismiss = allData[15].split(";")
 					for i,dzValue in enumerate(dzDismiss):
 						if i !=0:
-							query = "INSERT INTO dz (competitor,dz) VALUES ('%i','%s')"%(int(numComptetitor),dzValue)
-							cursor.execute(query)
-							conn.commit()
+							self.db.insertDz(int(numCompetitor),dzValue)
+							
 				codNum = int(allData[5].split(";")[1])
 				version = "2.0"
 				gpsNumber = allData[3].split(";")[1]
 				obs = " "
-				mi_query = "INSERT INTO data (competidor,nombre, orden,categoria,wpt,dz,disc,cod,version,gps,obs) VALUES ('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')"%(numComptetitor,nameCompetitor,numOrder,category,wpt,dz,disc,codNum,version,gpsNumber,obs)
-				cursor.execute(mi_query)
-				conn.commit()
-
-
+				self.db.insertData(numCompetitor,nameCompetitor,numOrder,category,wpt,dz,disc,codNum,version,gpsNumber,obs)
 				for line in allData:
 					try:
 						if findWord:
@@ -170,15 +156,12 @@ class Principal(QMainWindow):
 						pass
 				zoneDismiss = list(set(self.countZone) - set(zonePassed))
 				for a in zoneDismiss:
-					mi_query = "INSERT INTO zonedismiss (competitor,zone) VALUES ('%s','%s')"%(numComptetitor,a)
-					cursor.execute(mi_query)
-					conn.commit()
+					self.db.insertZoneDismiss(numCompetitor,a)
+					
 		self.countVehicles()
 		self.mainTable()
 
 	def countVehicles(self):
-		self.db = DataBase()
-		self.db.open('dakar.sqlite')
 		rows = self.db.get_category()
 
 		self.minMoto = rows[0][2]
@@ -215,62 +198,65 @@ class Principal(QMainWindow):
 
 	def otherTable(self):
 		rowSelected = self.mainWindow.tblGralStatus.currentIndex()
-		numComptetitor = self.mainWindow.tblGralStatus.item(rowSelected.row(),0)
+		rowDisc = self.mainWindow.tblGralStatus.item(rowSelected.row(),6)
+		numCompetitor = self.mainWindow.tblGralStatus.item(rowSelected.row(),0)
 
-		conn = sqlite3.connect('dakar.sqlite')
-		cursor = conn.cursor()
-
-		query = "SELECT * FROM data WHERE competidor = '%i'"%(int(numComptetitor.text()))
-		cursor.execute(query)
-		check = cursor.fetchone()
+		check = self.db.getDataCompetitor(int(numCompetitor.text()))
 
 		self.mainWindow.tblData.setItem(-1,1,QTableWidgetItem(str(check[1])))
 		self.mainWindow.tblData.setItem(0,1,QTableWidgetItem(str(check[10])))
 		self.mainWindow.tblData.setItem(1,1,QTableWidgetItem(str(check[2])))
 
-
-		query = "SELECT dz FROM dz WHERE competitor = '%i'"%(int(numComptetitor.text()))
-		cursor.execute(query)		
-		check = cursor.fetchall()
+		check = self.db.getDzCompetitor(int(numCompetitor.text()))
+		
 
 		if len(check) == 0:
+			self.mainWindow.lstDzStatus.clear()
 			self.mainWindow.lstDz.clear()
-			self.mainWindow.lstDz.addItem(QListWidgetItem("Dz: OK"))
-			self.mainWindow.tblDz.setHorizontalHeaderLabels(['DZ','OK'])
-			self.mainWindow.tblDz.setRowCount(0)
+			self.mainWindow.lstDzStatus.addItem(QListWidgetItem("OK"))
+			self.mainWindow.lstDzStatus.item(0).setBackground(QColor(133, 222, 84))
+			self.mainWindow.lstDzStatus.item(0).setTextAlignment(Qt.AlignHCenter)
 		else:
+			self.mainWindow.lstDzStatus.clear()
 			self.mainWindow.lstDz.clear()
-			self.mainWindow.lstDz.addItem(QListWidgetItem("Dz: NOK"))
-			self.mainWindow.tblDz.setHorizontalHeaderLabels(['DZ','NOK'])
-			self.mainWindow.tblDz.setRowCount(len(check))
+			self.mainWindow.lstDzStatus.addItem(QListWidgetItem("NOK"))
+			self.mainWindow.lstDzStatus.item(0).setBackground(QColor(255, 64, 16))
+			self.mainWindow.lstDzStatus.item(0).setTextAlignment(Qt.AlignHCenter)
+			self.mainWindow.lblWpt.setAlignment(Qt.AlignHCenter)
 			for m,data in enumerate(check):
-				self.mainWindow.tblDz.setItem(m,1,QTableWidgetItem(str(data[0])))
-				self.mainWindow.tblDz.setColumnWidth(0, 40)
-				self.mainWindow.tblDz.setColumnWidth(1, 70)
-				self.mainWindow.tblDz.resizeRowsToContents()
 				self.mainWindow.lstDz.addItem(QListWidgetItem("%s"%str(data[0])))
 
-		query = "SELECT zone FROM zonedismiss WHERE competitor = '%i'"%(int(numComptetitor.text()))
-		cursor.execute(query)		
-		check = cursor.fetchall()	
+		check = self.db.getZoneDismiss(int(numCompetitor.text()))
+			
+		
 		if len(check) == 0:
+			self.mainWindow.lstWptStatus.clear()
 			self.mainWindow.lstWpt.clear()
-			self.mainWindow.tblWpt.setHorizontalHeaderLabels(['WPT','OK'])
-			self.mainWindow.tblWpt.setRowCount(0)
-			self.mainWindow.lstWpt.addItem(QListWidgetItem("WPT: OK"))
+			self.mainWindow.lstWptStatus.addItem(QListWidgetItem("OK"))
+			self.mainWindow.lstWptStatus.item(0).setBackground(QColor(133, 222, 84))
+			self.mainWindow.lstWptStatus.item(0).setTextAlignment(Qt.AlignHCenter)
 		else:
 			self.mainWindow.lstWpt.clear()
-			self.mainWindow.tblWpt.setHorizontalHeaderLabels(['WPT','NOK'])
-			self.mainWindow.tblWpt.setRowCount(len(check))
-			self.mainWindow.lstWpt.addItem(QListWidgetItem("WPT: Nok"))
+			self.mainWindow.lstWptStatus.clear()
+			self.mainWindow.lstWptStatus.addItem(QListWidgetItem("NOK"))
+			self.mainWindow.lstWptStatus.item(0).setBackground(QColor(255, 64, 16))
+			self.mainWindow.lstWptStatus.item(0).setTextAlignment(Qt.AlignHCenter)
 			for m,data in enumerate(check):
-				self.mainWindow.tblWpt.setItem(m,1,QTableWidgetItem(str(data[0])))
-				self.mainWindow.tblWpt.setColumnWidth(0, 40)
-				self.mainWindow.tblWpt.setColumnWidth(1, 70)
-				self.mainWindow.tblWpt.resizeColumnsToContents()
-				self.mainWindow.tblWpt.resizeRowsToContents()
-				self.mainWindow.lstWpt.addItem(QListWidgetItem("            %s"%str(data[0])))
-			
+				self.mainWindow.lstWpt.addItem(QListWidgetItem("%s"%str(data[0])))
+				self.mainWindow.lstWpt.item(m).setTextAlignment(Qt.AlignHCenter)
+
+
+		self.mainWindow.lstDiscStatus.clear()
+		if rowDisc.text() == 'OK':
+			color = QColor(133, 222, 84)
+		else:
+			color = QColor(255, 64, 16)
+
+		self.mainWindow.lstDiscStatus.addItem(QListWidgetItem(rowDisc.text()))
+		self.mainWindow.lstDiscStatus.item(0).setBackground(color)
+		self.mainWindow.lstDiscStatus.item(0).setTextAlignment(Qt.AlignHCenter)
+				
+		
 
 
    
