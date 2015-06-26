@@ -107,8 +107,6 @@ class Principal(QMainWindow):
 			f = open( oneFile, 'r')
 			allData = f.readlines()
 			
-
-
 			numCompetitor = allData[2].split(";")[1]
 			check = self.db.getDataCompetitor(int(numCompetitor))
 			if check == None:
@@ -255,10 +253,6 @@ class Principal(QMainWindow):
 		self.mainWindow.lstDiscStatus.addItem(QListWidgetItem(rowDisc.text()))
 		self.mainWindow.lstDiscStatus.item(0).setBackground(color)
 		self.mainWindow.lstDiscStatus.item(0).setTextAlignment(Qt.AlignHCenter)
-				
-		
-
-
    
 if __name__ == '__main__':
 	app = QApplication(sys.argv)
