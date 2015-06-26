@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1209</width>
-    <height>650</height>
+    <width>1065</width>
+    <height>575</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -39,11 +39,12 @@
       <x>10</x>
       <y>10</y>
       <width>702</width>
-      <height>161</height>
+      <height>152</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(122, 155, 216)</string>
+     <string notr="true">border-radius:2px;border:2px solid grey;
+background-color:rgb(149, 180, 159)</string>
     </property>
     <property name="title">
      <string/>
@@ -59,11 +60,15 @@
      </property>
      <property name="font">
       <font>
-       <family>KacstOne</family>
+       <family>Sawasdee</family>
        <pointsize>14</pointsize>
        <weight>75</weight>
        <bold>true</bold>
       </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:0px solid grey;
+</string>
      </property>
      <property name="text">
       <string>DESAFIO RUTA 40 - 2015                     ETAPA    1</string>
@@ -156,7 +161,8 @@
      </size>
     </property>
     <property name="styleSheet">
-     <string notr="true">font: 9pt &quot;Noto Sans Thai UI&quot;;</string>
+     <string notr="true">border-radius:1px;border:1px solid grey;
+</string>
     </property>
     <column>
      <property name="text">
@@ -245,7 +251,7 @@
      <rect>
       <x>731</x>
       <y>10</y>
-      <width>231</width>
+      <width>211</width>
       <height>152</height>
      </rect>
     </property>
@@ -276,7 +282,7 @@
     </row>
     <column>
      <property name="text">
-      <string/>
+      <string>Data</string>
      </property>
     </column>
    </widget>
@@ -293,82 +299,208 @@
      <string/>
     </property>
    </widget>
-   <widget class="QTableWidget" name="tblWpt">
+   <widget class="QGroupBox" name="groupBox_2">
     <property name="geometry">
      <rect>
-      <x>730</x>
+      <x>731</x>
       <y>190</y>
-      <width>121</width>
-      <height>261</height>
+      <width>211</width>
+      <height>271</height>
      </rect>
     </property>
-    <column>
+    <property name="styleSheet">
+     <string notr="true">border:2px solid grey;</string>
+    </property>
+    <property name="title">
+     <string/>
+    </property>
+    <widget class="QLabel" name="lblDisc">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>220</y>
+       <width>30</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>30</width>
+       <height>10</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>88</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:0px solid grey;</string>
+     </property>
+     <property name="text">
+      <string>Disc</string>
+     </property>
+    </widget>
+    <widget class="QListWidget" name="lstDiscStatus">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>240</y>
+       <width>88</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>88</width>
+       <height>21</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:1px solid grey;</string>
+     </property>
+    </widget>
+    <widget class="QListWidget" name="lstWpt">
+     <property name="geometry">
+      <rect>
+       <x>13</x>
+       <y>64</y>
+       <width>88</width>
+       <height>151</height>
+      </rect>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>88</width>
+       <height>200</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:1px solid grey;</string>
+     </property>
+    </widget>
+    <widget class="QListWidget" name="lstDz">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>64</y>
+       <width>88</width>
+       <height>151</height>
+      </rect>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>88</width>
+       <height>200</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:1px solid grey;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="lblWpt">
+     <property name="geometry">
+      <rect>
+       <x>43</x>
+       <y>10</y>
+       <width>30</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>30</width>
+       <height>10</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>88</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:0px solid grey;</string>
+     </property>
      <property name="text">
       <string>WPT</string>
      </property>
-    </column>
-    <column>
-     <property name="text">
-      <string/>
+    </widget>
+    <widget class="QListWidget" name="lstWptStatus">
+     <property name="geometry">
+      <rect>
+       <x>13</x>
+       <y>34</y>
+       <width>88</width>
+       <height>21</height>
+      </rect>
      </property>
-    </column>
-   </widget>
-   <widget class="QTableWidget" name="tblDz">
-    <property name="geometry">
-     <rect>
-      <x>860</x>
-      <y>190</y>
-      <width>151</width>
-      <height>261</height>
-     </rect>
-    </property>
-    <column>
+     <property name="maximumSize">
+      <size>
+       <width>88</width>
+       <height>21</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:1px solid grey;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="lblDz">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>10</y>
+       <width>30</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>30</width>
+       <height>21</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:0px solid grey;</string>
+     </property>
      <property name="text">
       <string>DZ</string>
      </property>
-    </column>
-    <column>
-     <property name="text">
-      <string/>
+    </widget>
+    <widget class="QListWidget" name="lstDzStatus">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>34</y>
+       <width>88</width>
+       <height>21</height>
+      </rect>
      </property>
-    </column>
-   </widget>
-   <widget class="QListWidget" name="lstWpt">
-    <property name="geometry">
-     <rect>
-      <x>1020</x>
-      <y>190</y>
-      <width>91</width>
-      <height>261</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QListWidget" name="lstDz">
-    <property name="geometry">
-     <rect>
-      <x>1120</x>
-      <y>190</y>
-      <width>91</width>
-      <height>261</height>
-     </rect>
-    </property>
+     <property name="maximumSize">
+      <size>
+       <width>88</width>
+       <height>21</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:1px solid grey;</string>
+     </property>
+    </widget>
    </widget>
    <zorder>tblGralStatus</zorder>
    <zorder>lblPath</zorder>
    <zorder>groupBox</zorder>
    <zorder>tblData</zorder>
    <zorder>lblUpdate</zorder>
-   <zorder>tblWpt</zorder>
-   <zorder>tblDz</zorder>
-   <zorder>lstWpt</zorder>
-   <zorder>lstDz</zorder>
+   <zorder>groupBox_2</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1209</width>
+     <width>1065</width>
      <height>27</height>
     </rect>
    </property>
