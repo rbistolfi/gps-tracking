@@ -70,6 +70,8 @@ class Principal(QMainWindow):
 			self.countZone.append(i[0])
 	
 	def mainTable(self):
+		"""Show the main table. Search data from sqlite
+		"""
 		rows = self.db.get_tables()
 		self.mainWindow.tblGralStatus.setRowCount(len(rows))
 
@@ -84,19 +86,26 @@ class Principal(QMainWindow):
 					else:
 						color = QColor("white")
 					self.mainWindow.tblGralStatus.item(i, m - 1).setBackground(QColor(color))
-					self.mainWindow.tblGralStatus.resizeColumnsToContents()
-					self.mainWindow.tblGralStatus.resizeRowsToContents()
+					self.mainWindow.tblGralStatus.item(i, m - 1).setTextAlignment(Qt.AlignCenter)
+		self.mainWindow.tblGralStatus.resizeColumnsToContents()
+		self.mainWindow.tblGralStatus.resizeRowsToContents()
+		self.mainWindow.tblGralStatus.setColumnWidth(1,100)
+		self.mainWindow.tblGralStatus.setColumnWidth(10,308)	
 		self.mainWindow.tblGralStatus.setSortingEnabled(True)
 		
 				
 
 	def openCategoryWindow(self):
+		"""Open the windows who´s conteins the parameter of category
+		"""
 		mainWindow = CategoryParam().exec_()
 
 	def openEditZone(self):
 		mainWindow = EditZone().exec_()
 
 	def searchPath(self):
+		"""Search the path where are the files .csv
+		"""
 		dir_ = QFileDialog.getExistingDirectory(None, 'Select a folder:', 'C:\\', QFileDialog.ShowDirsOnly)
 		f = open('path.txt','w')
 		f.write(dir_)
@@ -105,6 +114,9 @@ class Principal(QMainWindow):
 		self.inputFiles()
 	
 	def inputFiles(self):
+		"""This section open each .csv file, look in BD if this competitor alredy exist and
+		if not, its add it into BD, then call mainTable
+		"""
 		f = open('path.txt')
 		path = f.readline()
 		self.mainWindow.lblPath.setText("Current Path: " + path)
@@ -177,6 +189,9 @@ class Principal(QMainWindow):
 		self.mainTable()
 
 	def countVehicles(self):
+		"""Count how many different vehicle exist and count each of them, then show it on 
+		a text area
+		"""
 		rows = self.db.get_category()
 
 		self.minMoto = rows[0][2]
@@ -202,16 +217,20 @@ class Principal(QMainWindow):
 		self.mainWindow.lnCountQuad.setText(str(countQuad))
 		self.mainWindow.lnCountCar.setText(str(countCar))
 	def checkNewFile(self):
+		"""Check if exist a new and diferent on the folder, if exist a new one then call to inputFiles
+		"""
 		f = open('path.txt')
 		path = f.readline()
 		allFiles = glob.glob(path + "/*.csv")
-		if len(allFiles) > len(self.tmpCountFile):
+		#if len(allFiles) > len(self.tmpCountFile):
 			#self.mainWindow.lblUpdate.setText("Hay nuevos archivos")
-			self.inputFiles()
-		else:
-			self.mainWindow.lblUpdate.setText(" ")
+			#self.inputFiles()
+		# else:
+		# 	self.mainWindow.lblUpdate.setText(" ")
 
 	def otherTable(self):
+		"""This section complete the DR, WPT and Data table from each competitor
+		"""
 		rowSelected = self.mainWindow.tblGralStatus.currentIndex()
 		rowDisc = self.mainWindow.tblGralStatus.item(rowSelected.row(),6)
 		numCompetitor = self.mainWindow.tblGralStatus.item(rowSelected.row(),0)
@@ -271,6 +290,7 @@ class Principal(QMainWindow):
 		self.mainWindow.lstDiscStatus.item(0).setTextAlignment(Qt.AlignHCenter)
 
 	def deleteData(self):
+		"""Delete al data"""
 		self.tmpCountFile = []
 		self.db.deleteData()
 		self.countVehicles()

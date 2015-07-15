@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1065</width>
-    <height>575</height>
+    <width>1265</width>
+    <height>775</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,8 +17,8 @@
    <widget class="QLabel" name="lblPath">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>510</y>
+      <x>0</x>
+      <y>700</y>
       <width>1062</width>
       <height>21</height>
      </rect>
@@ -38,8 +38,8 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>702</width>
-      <height>152</height>
+      <width>902</width>
+      <height>200</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -149,9 +149,9 @@ background-color:rgb(149, 180, 159)</string>
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>190</y>
-      <width>702</width>
-      <height>271</height>
+      <y>250</y>
+      <width>901</width>
+      <height>381</height>
      </rect>
     </property>
     <property name="minimumSize">
@@ -166,7 +166,7 @@ background-color:rgb(149, 180, 159)</string>
     </property>
     <column>
      <property name="text">
-      <string>Competidor N°</string>
+      <string>N° Comp</string>
      </property>
      <property name="textAlignment">
       <set>AlignHCenter|AlignVCenter|AlignCenter</set>
@@ -246,46 +246,6 @@ background-color:rgb(149, 180, 159)</string>
      </property>
     </column>
    </widget>
-   <widget class="QTableWidget" name="tblData">
-    <property name="geometry">
-     <rect>
-      <x>731</x>
-      <y>10</y>
-      <width>211</width>
-      <height>152</height>
-     </rect>
-    </property>
-    <row>
-     <property name="text">
-      <string>Competidor N°:</string>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>GPS N°:</string>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>Nombre:</string>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>Fecha:</string>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>Hora:</string>
-     </property>
-    </row>
-    <column>
-     <property name="text">
-      <string>Data</string>
-     </property>
-    </column>
-   </widget>
    <widget class="QLabel" name="lblUpdate">
     <property name="geometry">
      <rect>
@@ -302,8 +262,8 @@ background-color:rgb(149, 180, 159)</string>
    <widget class="QGroupBox" name="groupBox_2">
     <property name="geometry">
      <rect>
-      <x>731</x>
-      <y>190</y>
+      <x>940</x>
+      <y>250</y>
       <width>211</width>
       <height>271</height>
      </rect>
@@ -491,8 +451,8 @@ background-color:rgb(149, 180, 159)</string>
    <widget class="QPushButton" name="btnExit">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>470</y>
+      <x>10</x>
+      <y>660</y>
       <width>75</width>
       <height>23</height>
      </rect>
@@ -501,21 +461,61 @@ background-color:rgb(149, 180, 159)</string>
      <string>Salir</string>
     </property>
    </widget>
+   <widget class="QTableWidget" name="tblData">
+    <property name="geometry">
+     <rect>
+      <x>940</x>
+      <y>10</y>
+      <width>211</width>
+      <height>181</height>
+     </rect>
+    </property>
+    <row>
+     <property name="text">
+      <string>Competidor N°:</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>GPS N°:</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>Nombre:</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>Fecha:</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>Hora:</string>
+     </property>
+    </row>
+    <column>
+     <property name="text">
+      <string>Data</string>
+     </property>
+    </column>
+   </widget>
    <zorder>tblGralStatus</zorder>
    <zorder>lblPath</zorder>
    <zorder>groupBox</zorder>
-   <zorder>tblData</zorder>
    <zorder>lblUpdate</zorder>
    <zorder>groupBox_2</zorder>
    <zorder>btnExit</zorder>
+   <zorder>tblData</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1065</width>
-     <height>21</height>
+     <width>1265</width>
+     <height>27</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
