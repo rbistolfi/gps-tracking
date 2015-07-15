@@ -35,8 +35,6 @@ class DataBase:
         q = "DELETE FROM dz"
         self.cursor.execute(q)
         self.conn.commit()
-    def maxOrden(self):
-        q = "SELECT max(orden) FROM data"
 
     def insertZone(self,numZone,valueZone):
         q = "INSERT INTO zone (numZone,zone) VALUES ('%i','%s')"%(int(numZone),valueZone)
@@ -82,3 +80,7 @@ class DataBase:
     def close(self):
         self.cursor.close()
         self.conn.close()
+    def updateData(self,title,idCompetitor,cell):
+        query = "UPDATE data  SET '%s'='%s' WHERE competidor ='%s'"%(title,cell,idCompetitor)
+        self.cursor.execute(query)
+        self.commit()

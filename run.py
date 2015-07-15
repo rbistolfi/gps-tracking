@@ -1,4 +1,3 @@
-        #self.connect(self.ventana.pushButton,SIGNAL('clicked()'),self.change)
 # -*- coding: utf-8 -*-
 
 from PyQt4.QtCore import *
@@ -12,6 +11,8 @@ from classEditZone import EditZone
 from classCategoryParam import CategoryParam
 
 import sys
+reload(sys)
+sys.setdefaultencoding("utf-8")
 from database import DataBase
 import glob
 import csv
@@ -57,6 +58,7 @@ class Principal(QMainWindow):
 
 		self.connect(self.ctimer,SIGNAL("timeout()"), self.checkNewFile)
 		self.mainWindow.tblGralStatus.cellClicked.connect(self.otherTable)
+		self.mainWindow.tblGralStatus.cellChanged.connect(self.saveCell)
 		self.connect(self.mainWindow.btnExit,SIGNAL('clicked()'),self.exit)
 	def path(self):
 		f = open('path.txt')
@@ -78,7 +80,7 @@ class Principal(QMainWindow):
 		for i,table in enumerate(rows):
 			for m,data in enumerate(table):
 				if m != 0:
-					self.mainWindow.tblGralStatus.setItem(i,m - 1,QTableWidgetItem(str(data)))
+					self.mainWindow.tblGralStatus.setItem(i,m - 1,QTableWidgetItem(str(data).decode("utf-8")))
 					if str(data) == 'OK':
 						color = QColor(133, 222, 84)
 					elif str(data) == 'NOK':
@@ -238,7 +240,7 @@ class Principal(QMainWindow):
 
 		self.mainWindow.tblData.setItem(-1,1,QTableWidgetItem(str(check[1])))
 		self.mainWindow.tblData.setItem(0,1,QTableWidgetItem(str(check[10])))
-		self.mainWindow.tblData.setItem(1,1,QTableWidgetItem(str(check[2])))
+		self.mainWindow.tblData.setItem(1,1,QTableWidgetItem(str(check[2]).decode("utf-8")))
 
 		check = self.db.getDzCompetitor(int(numCompetitor.text()))
 		
@@ -295,6 +297,17 @@ class Principal(QMainWindow):
 		self.db.deleteData()
 		self.countVehicles()
 		self.mainTable()
+	def saveCell(self, row, column):
+		if column == 1:
+			name = self.mainWindow.tblGralStatus.item(row,column).text()
+			idCompetitor = self.mainWindow.tblGralStatus.item(row,0).text()
+		 	self.db.updateData("nombre",idCompetitor, name)
+		elif column == 10:
+			obs = self.mainWindow.tblGralStatus.item(row,column).text()
+			idCompetitor = self.mainWindow.tblGralStatus.item(row,0).text()
+			self.db.updateData("obs",idCompetitor, obs)
+		#self.mainTable()
+		
 if __name__ == '__main__':
 	app = QApplication(sys.argv)
 	principal = Principal()
