@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'mainWindow.ui'
 #
-# Created: Thu Jun 25 11:47:20 2015
+# Created: Fri Jun 26 11:30:48 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -198,6 +198,8 @@ class Ui_MainWindow(object):
         self.menuOpen.setObjectName(_fromUtf8("menuOpen"))
         self.menuParametres = QtGui.QMenu(self.menubar)
         self.menuParametres.setObjectName(_fromUtf8("menuParametres"))
+        self.menuData = QtGui.QMenu(self.menubar)
+        self.menuData.setObjectName(_fromUtf8("menuData"))
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtGui.QStatusBar(MainWindow)
         self.statusbar.setObjectName(_fromUtf8("statusbar"))
@@ -214,6 +216,8 @@ class Ui_MainWindow(object):
         self.actionCategory.setObjectName(_fromUtf8("actionCategory"))
         self.actionEditZone = QtGui.QAction(MainWindow)
         self.actionEditZone.setObjectName(_fromUtf8("actionEditZone"))
+        self.actionDeleteData = QtGui.QAction(MainWindow)
+        self.actionDeleteData.setObjectName(_fromUtf8("actionDeleteData"))
         self.menuOpen.addSeparator()
         self.menuOpen.addAction(self.actionFile)
         self.menuOpen.addAction(self.actionFolder)
@@ -222,8 +226,10 @@ class Ui_MainWindow(object):
         self.menuParametres.addAction(self.actionDirectoryPath)
         self.menuParametres.addAction(self.actionCategory)
         self.menuParametres.addAction(self.actionEditZone)
+        self.menuData.addAction(self.actionDeleteData)
         self.menubar.addAction(self.menuFile.menuAction())
         self.menubar.addAction(self.menuParametres.menuAction())
+        self.menubar.addAction(self.menuData.menuAction())
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -274,10 +280,12 @@ class Ui_MainWindow(object):
         self.menuFile.setTitle(_translate("MainWindow", "File", None))
         self.menuOpen.setTitle(_translate("MainWindow", "Open", None))
         self.menuParametres.setTitle(_translate("MainWindow", "Parametres", None))
+        self.menuData.setTitle(_translate("MainWindow", "Data", None))
         self.actionClose.setText(_translate("MainWindow", "Close", None))
         self.actionFile.setText(_translate("MainWindow", "File", None))
         self.actionFolder.setText(_translate("MainWindow", "Folder", None))
         self.actionDirectoryPath.setText(_translate("MainWindow", "Directory Path", None))
         self.actionCategory.setText(_translate("MainWindow", "Category", None))
         self.actionEditZone.setText(_translate("MainWindow", "Edit Zone", None))
+        self.actionDeleteData.setText(_translate("MainWindow", "Delete All Data", None))
 

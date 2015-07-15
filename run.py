@@ -37,7 +37,7 @@ class Principal(QMainWindow):
 		
 		self.countZones()
 		self.countVehicles()
-		self.inputFiles()
+		#self.inputFiles()
 
 		
 		self.mainWindow.tblData.resizeRowsToContents()
@@ -50,6 +50,7 @@ class Principal(QMainWindow):
 		self.mainWindow.actionCategory.triggered.connect(self.openCategoryWindow)
 		self.mainWindow.actionDirectoryPath.triggered.connect(self.searchPath)
 		self.mainWindow.actionEditZone.triggered.connect(self.openEditZone)
+		self.mainWindow.actionDeleteData.triggered.connect(self.deleteData)
 
 		self.connect(self.ctimer,SIGNAL("timeout()"), self.checkNewFile)
 		self.mainWindow.tblGralStatus.cellClicked.connect(self.otherTable)
@@ -108,7 +109,10 @@ class Principal(QMainWindow):
 			allData = f.readlines()
 			
 			numCompetitor = allData[2].split(";")[1]
-			check = self.db.getDataCompetitor(int(numCompetitor))
+			try:
+				check = self.db.getDataCompetitor(int(numCompetitor))
+			except:
+				check = False
 			if check == None:
 				nameCompetitor = " "
 				numOrder = "1"
@@ -201,9 +205,9 @@ class Principal(QMainWindow):
 
 		check = self.db.getDataCompetitor(int(numCompetitor.text()))
 
-		self.mainWindow.tblData.setItem(-1,1,QTableWidgetItem(str(check[1])))
-		self.mainWindow.tblData.setItem(0,1,QTableWidgetItem(str(check[10])))
-		self.mainWindow.tblData.setItem(1,1,QTableWidgetItem(str(check[2])))
+		self.mainWindow.tblData.setItem(0,1,QTableWidgetItem(str(check[1])))
+		self.mainWindow.tblData.setItem(1,1,QTableWidgetItem(str(check[10])))
+		self.mainWindow.tblData.setItem(2,1,QTableWidgetItem(str(check[2])))
 
 		check = self.db.getDzCompetitor(int(numCompetitor.text()))
 		
@@ -253,7 +257,11 @@ class Principal(QMainWindow):
 		self.mainWindow.lstDiscStatus.addItem(QListWidgetItem(rowDisc.text()))
 		self.mainWindow.lstDiscStatus.item(0).setBackground(color)
 		self.mainWindow.lstDiscStatus.item(0).setTextAlignment(Qt.AlignHCenter)
-   
+
+	def deleteData(self):
+		self.db.deleteData()
+		self.countVehicles()
+		self.mainTable()
 if __name__ == '__main__':
 	app = QApplication(sys.argv)
 	principal = Principal()

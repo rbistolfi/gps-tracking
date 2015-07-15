@@ -25,6 +25,16 @@ class DataBase:
         q = "DELETE FROM zone"
         self.cursor.execute(q)
         self.conn.commit()
+    def deleteData(self):
+        q = "DELETE FROM data"
+        self.cursor.execute(q)
+        self.conn.commit()
+        q = "DELETE FROM zonedismiss"
+        self.cursor.execute(q)
+        self.conn.commit()
+        q = "DELETE FROM dz"
+        self.cursor.execute(q)
+        self.conn.commit()
     def insertZone(self,numZone,valueZone):
         q = "INSERT INTO zone (numZone,zone) VALUES ('%i','%s')"%(int(numZone),valueZone)
         self.cursor.execute(q)

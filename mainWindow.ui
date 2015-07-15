@@ -527,8 +527,15 @@ background-color:rgb(149, 180, 159)</string>
     <addaction name="actionCategory"/>
     <addaction name="actionEditZone"/>
    </widget>
+   <widget class="QMenu" name="menuData">
+    <property name="title">
+     <string>Data</string>
+    </property>
+    <addaction name="actionDeleteData"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuParametres"/>
+   <addaction name="menuData"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionClose">
@@ -559,6 +566,11 @@ background-color:rgb(149, 180, 159)</string>
   <action name="actionEditZone">
    <property name="text">
     <string>Edit Zone</string>
+   </property>
+  </action>
+  <action name="actionDeleteData">
+   <property name="text">
+    <string>Delete All Data</string>
    </property>
   </action>
  </widget>
