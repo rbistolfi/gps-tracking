@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'editZone.ui'
 #
-# Created: Tue Jun 23 18:41:59 2015
+# Created: Thu Jun 25 11:59:24 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -33,7 +33,7 @@ class Ui_editZone(object):
         self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Ok)
         self.buttonBox.setObjectName(_fromUtf8("buttonBox"))
         self.tblZone = QtGui.QTableWidget(editZone)
-        self.tblZone.setGeometry(QtCore.QRect(10, 30, 141, 241))
+        self.tblZone.setGeometry(QtCore.QRect(10, 30, 164, 241))
         self.tblZone.setObjectName(_fromUtf8("tblZone"))
         self.tblZone.setColumnCount(2)
         self.tblZone.setRowCount(0)
@@ -78,7 +78,7 @@ class Ui_editZone(object):
         item = self.tblZone.horizontalHeaderItem(1)
         item.setText(_translate("editZone", "Zone", None))
         self.btnDeleteZone.setText(_translate("editZone", "Delete All Zones", None))
-        self.label_2.setText(_translate("editZone", "Num Zone", None))
+        self.label_2.setText(_translate("editZone", "Num Zones", None))
         self.label.setText(_translate("editZone", "Zone", None))
         self.btnAdd.setText(_translate("editZone", "Add", None))
 

@@ -18,19 +18,67 @@ class DataBase:
         """Retorna las tablas de Categoria"""
         q = self.cursor.execute("SELECT * FROM category")
         return q.fetchall()
-    def get_table_info(self, table):
-        """Retorna las columnas"""
-
-        q = self.cursor.execute("PRAGMA table_info(%s)" % table)
-        return q.fetchall()
-    def get_table_items(self, table):
-        """Retorna las filas"""
-        print "#####",table
-        q = self.cursor.execute("SELECT * FROM " + table)
-        return q.fetchall()
     def commit(self):
         """Guardar cambios"""
         self.conn.commit()
+    def deleteZone(self):
+        q = "DELETE FROM zone"
+        self.cursor.execute(q)
+        self.conn.commit()
+    def deleteData(self):
+        q = "DELETE FROM data"
+        self.cursor.execute(q)
+        self.conn.commit()
+        q = "DELETE FROM zonedismiss"
+        self.cursor.execute(q)
+        self.conn.commit()
+        q = "DELETE FROM dz"
+        self.cursor.execute(q)
+        self.conn.commit()
+    def maxOrden(self):
+        q = "SELECT max(orden) FROM data"
+
+    def insertZone(self,numZone,valueZone):
+        q = "INSERT INTO zone (numZone,zone) VALUES ('%i','%s')"%(int(numZone),valueZone)
+        self.cursor.execute(q)
+        self.conn.commit()
+    def getZone(self):
+        q = self.cursor.execute("SELECT * FROM zone")
+        return q.fetchall()
+    def countZone(self):
+        q = self.cursor.execute("SELECT numZone FROM zone ")
+        return q.fetchall()
+    def getDataCompetitor(self,numCompetitor):
+        q = self.cursor.execute("SELECT * FROM data WHERE competidor = '%i'"%(numCompetitor))
+        return q.fetchone()
+    def getDzCompetitor(self,numCompetitor):
+        query = "SELECT dz FROM dz WHERE competitor = '%i'"%(numCompetitor)
+        q = self.cursor.execute(query)       
+        return q.fetchall()
+    def getZoneDismiss(self,numCompetitor):
+        query = "SELECT zone FROM zonedismiss WHERE competitor = '%i'"%(numCompetitor)
+        q = self.cursor.execute(query)       
+        return q.fetchall()
+    def insertDz(self, numCompetitor,dzValue):
+        query = "INSERT INTO dz (competitor,dz) VALUES ('%i','%s')"%(numCompetitor,dzValue)
+        q = self.cursor.execute(query)
+        self.commit()
+    def insertData(self,numCompetitor,nameCompetitor,category,wpt,dz,disc,codNum,version,gpsNumber,obs):
+        query = "SELECT max(orden) FROM data"
+        q = self.cursor.execute(query)
+        maxNum = q.fetchone()
+
+        if maxNum[0] == None:
+            numOrder = 1
+        else:
+            numOrder = maxNum[0] + 1
+        query = "INSERT INTO data (competidor,nombre, orden,categoria,wpt,dz,disc,cod,version,gps,obs) VALUES ('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')"%(numCompetitor,nameCompetitor,numOrder,category,wpt,dz,disc,codNum,version,gpsNumber,obs)
+        self.cursor.execute(query)
+        self.commit()
+    def insertZoneDismiss(self,numCompetitor,a):
+        query = "INSERT INTO zonedismiss (competitor,zone) VALUES ('%s','%s')"%(numCompetitor,a)
+        self.cursor.execute(query)
+        self.commit()
     def close(self):
         self.cursor.close()
         self.conn.close()
