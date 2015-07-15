@@ -2,7 +2,11 @@
 
 # Form implementation generated from reading ui file 'editZone.ui'
 #
+<<<<<<< HEAD
 # Created: Wed Jul 15 17:06:05 2015
+=======
+# Created: Thu Jun 25 11:59:24 2015
+>>>>>>> 8cf44df154c2383fb4efb11491b89f3ca093d1bc
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -80,7 +84,10 @@ class Ui_editZone(object):
         item.setText(_translate("editZone", "Zone", None))
         self.btnDeleteZone.setText(_translate("editZone", "Delete All Zones", None))
         self.label_2.setText(_translate("editZone", "Num Zones", None))
+<<<<<<< HEAD
         self.lnNumZone.setText(_translate("editZone", "1", None))
+=======
+>>>>>>> 8cf44df154c2383fb4efb11491b89f3ca093d1bc
         self.label.setText(_translate("editZone", "Zone", None))
         self.btnAdd.setText(_translate("editZone", "Add", None))
 
