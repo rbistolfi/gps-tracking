@@ -60,12 +60,15 @@ class Principal(QMainWindow):
 		self.mainWindow.tblGralStatus.cellClicked.connect(self.otherTable)
 		self.mainWindow.tblGralStatus.cellChanged.connect(self.saveCell)
 		self.connect(self.mainWindow.btnExit,SIGNAL('clicked()'),self.exit)
+
 	def path(self):
 		f = open('path.txt')
 		path = f.readline()
 		self.mainWindow.lblPath.setText("Current Path: " + path)
+
 	def exit(self):
 		exit()
+
 	def countZones(self):
 		check = self.db.countZone()
 		for i in check:
@@ -297,7 +300,10 @@ class Principal(QMainWindow):
 		self.db.deleteData()
 		self.countVehicles()
 		self.mainTable()
+		
 	def saveCell(self, row, column):
+		"""This is for save when put the name or any observation on the main table
+		then will be saved into the BD"""
 		if column == 1:
 			name = self.mainWindow.tblGralStatus.item(row,column).text()
 			idCompetitor = self.mainWindow.tblGralStatus.item(row,0).text()
@@ -306,7 +312,7 @@ class Principal(QMainWindow):
 			obs = self.mainWindow.tblGralStatus.item(row,column).text()
 			idCompetitor = self.mainWindow.tblGralStatus.item(row,0).text()
 			self.db.updateData("obs",idCompetitor, obs)
-		#self.mainTable()
+	
 		
 if __name__ == '__main__':
 	app = QApplication(sys.argv)

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'mainWindow.ui'
 #
-# Created: Wed Jul 15 13:21:01 2015
+# Created: Wed Jul 15 17:27:25 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -125,7 +125,7 @@ class Ui_MainWindow(object):
         self.lblUpdate.setText(_fromUtf8(""))
         self.lblUpdate.setObjectName(_fromUtf8("lblUpdate"))
         self.groupBox_2 = QtGui.QGroupBox(self.centralwidget)
-        self.groupBox_2.setGeometry(QtCore.QRect(940, 250, 211, 271))
+        self.groupBox_2.setGeometry(QtCore.QRect(940, 280, 211, 271))
         self.groupBox_2.setStyleSheet(_fromUtf8("border:2px solid grey;"))
         self.groupBox_2.setTitle(_fromUtf8(""))
         self.groupBox_2.setObjectName(_fromUtf8("groupBox_2"))
@@ -191,6 +191,12 @@ class Ui_MainWindow(object):
         self.tblData.setVerticalHeaderItem(4, item)
         item = QtGui.QTableWidgetItem()
         self.tblData.setHorizontalHeaderItem(0, item)
+        self.lnGps = QtGui.QLineEdit(self.centralwidget)
+        self.lnGps.setGeometry(QtCore.QRect(1000, 230, 71, 27))
+        self.lnGps.setObjectName(_fromUtf8("lnGps"))
+        self.label_2 = QtGui.QLabel(self.centralwidget)
+        self.label_2.setGeometry(QtCore.QRect(1010, 210, 57, 17))
+        self.label_2.setObjectName(_fromUtf8("label_2"))
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1265, 27))
@@ -281,6 +287,7 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "Hora:", None))
         item = self.tblData.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "Data", None))
+        self.label_2.setText(_translate("MainWindow", "N° GPS", None))
         self.menuFile.setTitle(_translate("MainWindow", "File", None))
         self.menuOpen.setTitle(_translate("MainWindow", "Open", None))
         self.menuParametres.setTitle(_translate("MainWindow", "Parametres", None))
