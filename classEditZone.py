@@ -23,10 +23,7 @@ class EditZone(QDialog):
 		self.connect(self.editZone.btnAdd,SIGNAL('clicked()'),self.addZone)
 
 	def deleteZone(self):
-<<<<<<< HEAD
 		self.editZone.lnNumZone.setText("1")
-=======
->>>>>>> 8cf44df154c2383fb4efb11491b89f3ca093d1bc
 		self.db.deleteZone()
 		self.createTable()		
 
@@ -46,17 +43,10 @@ class EditZone(QDialog):
 	def addZone(self):
 		valueZone = self.editZone.lnZone.text()
 		numZone = self.editZone.lnNumZone.text()
-<<<<<<< HEAD
 		tmpZone = int(numZone) + 1
 		self.db.insertZone(numZone,valueZone)
 		self.editZone.lnNumZone.setText(str(tmpZone))
-=======
-
-		self.db.insertZone(numZone,valueZone)
-		
->>>>>>> 8cf44df154c2383fb4efb11491b89f3ca093d1bc
 		self.editZone.lnZone.setText("")
-		self.editZone.lnNumZone.setText("")
 		self.createTable()
 		
 
