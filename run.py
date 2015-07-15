@@ -39,8 +39,11 @@ class Principal(QMainWindow):
 		
 		self.countZones()
 		self.countVehicles()
+<<<<<<< HEAD
 		self.path()
 		self.mainTable()
+=======
+>>>>>>> change-design
 		#self.inputFiles()
 
 		
@@ -58,6 +61,7 @@ class Principal(QMainWindow):
 
 		self.connect(self.ctimer,SIGNAL("timeout()"), self.checkNewFile)
 		self.mainWindow.tblGralStatus.cellClicked.connect(self.otherTable)
+<<<<<<< HEAD
 		self.mainWindow.tblGralStatus.cellChanged.connect(self.saveCell)
 		self.connect(self.mainWindow.btnExit,SIGNAL('clicked()'),self.exit)
 
@@ -69,6 +73,8 @@ class Principal(QMainWindow):
 	def exit(self):
 		exit()
 
+=======
+>>>>>>> change-design
 	def countZones(self):
 		check = self.db.countZone()
 		for i in check:
@@ -134,9 +140,14 @@ class Principal(QMainWindow):
 			zonePassed = []
 			f = open( oneFile, 'r')
 			allData = f.readlines()
+<<<<<<< HEAD
 			#try:
 			numCompetitorStr = allData[2].split(";")[1]
 			numCompetitor = re.sub("\D", "", numCompetitorStr)
+=======
+			
+			numCompetitor = allData[2].split(";")[1]
+>>>>>>> change-design
 			try:
 				check = self.db.getDataCompetitor(int(numCompetitor))
 			except:
@@ -173,7 +184,11 @@ class Principal(QMainWindow):
 				version = "2.0"
 				gpsNumber = allData[3].split(";")[1]
 				obs = " "
+<<<<<<< HEAD
 				self.db.insertData(int(numCompetitor),nameCompetitor,category,wpt,dz,disc,codNum,version,gpsNumber,obs)
+=======
+				self.db.insertData(numCompetitor,nameCompetitor,numOrder,category,wpt,dz,disc,codNum,version,gpsNumber,obs)
+>>>>>>> change-design
 				for line in allData:
 					try:
 						if findWord:
@@ -187,16 +202,22 @@ class Principal(QMainWindow):
 				zoneDismiss = list(set(self.countZone) - set(zonePassed))
 				for a in zoneDismiss:
 					self.db.insertZoneDismiss(numCompetitor,a)
+<<<<<<< HEAD
 			#except:
 				#pass
+=======
+>>>>>>> change-design
 					
 		self.countVehicles()
 		self.mainTable()
 
 	def countVehicles(self):
+<<<<<<< HEAD
 		"""Count how many different vehicle exist and count each of them, then show it on 
 		a text area
 		"""
+=======
+>>>>>>> change-design
 		rows = self.db.get_category()
 
 		self.minMoto = rows[0][2]
@@ -239,12 +260,22 @@ class Principal(QMainWindow):
 		rowSelected = self.mainWindow.tblGralStatus.currentIndex()
 		rowDisc = self.mainWindow.tblGralStatus.item(rowSelected.row(),6)
 		numCompetitor = self.mainWindow.tblGralStatus.item(rowSelected.row(),0)
+<<<<<<< HEAD
 		check = self.db.getDataCompetitor(int(numCompetitor.text()))
 
 		self.mainWindow.tblData.setItem(-1,1,QTableWidgetItem(str(check[1])))
 		self.mainWindow.tblData.setItem(0,1,QTableWidgetItem(str(check[10])))
 		self.mainWindow.tblData.setItem(1,1,QTableWidgetItem(str(check[2]).decode("utf-8")))
 
+=======
+
+		check = self.db.getDataCompetitor(int(numCompetitor.text()))
+
+		self.mainWindow.tblData.setItem(0,1,QTableWidgetItem(str(check[1])))
+		self.mainWindow.tblData.setItem(1,1,QTableWidgetItem(str(check[10])))
+		self.mainWindow.tblData.setItem(2,1,QTableWidgetItem(str(check[2])))
+
+>>>>>>> change-design
 		check = self.db.getDzCompetitor(int(numCompetitor.text()))
 		
 
@@ -295,6 +326,7 @@ class Principal(QMainWindow):
 		self.mainWindow.lstDiscStatus.item(0).setTextAlignment(Qt.AlignHCenter)
 
 	def deleteData(self):
+<<<<<<< HEAD
 		"""Delete al data"""
 		self.tmpCountFile = []
 		self.db.deleteData()
@@ -314,6 +346,11 @@ class Principal(QMainWindow):
 			self.db.updateData("obs",idCompetitor, obs)
 	
 		
+=======
+		self.db.deleteData()
+		self.countVehicles()
+		self.mainTable()
+>>>>>>> change-design
 if __name__ == '__main__':
 	app = QApplication(sys.argv)
 	principal = Principal()

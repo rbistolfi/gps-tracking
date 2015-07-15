@@ -35,7 +35,10 @@ class DataBase:
         q = "DELETE FROM dz"
         self.cursor.execute(q)
         self.conn.commit()
+<<<<<<< HEAD
 
+=======
+>>>>>>> change-design
     def insertZone(self,numZone,valueZone):
         q = "INSERT INTO zone (numZone,zone) VALUES ('%i','%s')"%(int(numZone),valueZone)
         self.cursor.execute(q)
@@ -61,6 +64,7 @@ class DataBase:
         query = "INSERT INTO dz (competitor,dz) VALUES ('%i','%s')"%(numCompetitor,dzValue)
         q = self.cursor.execute(query)
         self.commit()
+<<<<<<< HEAD
     def insertData(self,numCompetitor,nameCompetitor,category,wpt,dz,disc,codNum,version,gpsNumber,obs):
         query = "SELECT max(orden) FROM data"
         q = self.cursor.execute(query)
@@ -70,6 +74,9 @@ class DataBase:
             numOrder = 1
         else:
             numOrder = maxNum[0] + 1
+=======
+    def insertData(self,numCompetitor,nameCompetitor,numOrder,category,wpt,dz,disc,codNum,version,gpsNumber,obs):
+>>>>>>> change-design
         query = "INSERT INTO data (competidor,nombre, orden,categoria,wpt,dz,disc,cod,version,gps,obs) VALUES ('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')"%(numCompetitor,nameCompetitor,numOrder,category,wpt,dz,disc,codNum,version,gpsNumber,obs)
         self.cursor.execute(query)
         self.commit()
